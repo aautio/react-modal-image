@@ -176,7 +176,7 @@ export default class extends Component {
             >
               <ZoomOutIcon />
             </a>
-            <a href="" style={iconStyles} onClick={onClose}>
+            <a style={iconStyles} onClick={onClose}>
               <CloseIcon />
             </a>
           </span>
