@@ -9,6 +9,11 @@ class Demo extends Component {
       <div>
         <h1>react-modal-image</h1>
 
+        <p>
+          Images for the demo are provided by{" "}
+          <a href="https://picsum.photos/">https://picsum.photos/</a>.
+        </p>
+
         <p>Square</p>
 
         <ModalImage
@@ -30,7 +35,7 @@ class Demo extends Component {
         <p>Horizontal</p>
 
         <ModalImage
-          alt="This is the caption for the third image"
+          alt="This is the caption for the third image. This is a long one."
           preview="https://picsum.photos/100/20?image=2"
           fullscreen="https://picsum.photos/500/100?image=2"
           download="https://picsum.photos/1000/200?image=2"

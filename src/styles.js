@@ -36,7 +36,6 @@ export const imageStyles = {
 export const iconStyles = {
   fontSize: "40px",
   cursor: "pointer",
-  float: "right",
   lineHeight: "40px",
   boxSizing: "border-box",
   border: "none",
@@ -50,6 +49,7 @@ export const iconWithMarginRightStyles = Object.assign({}, iconStyles, {
 });
 
 export const captionStyles = {
+  display: "inline-block",
   color: "white",
   fontSize: "120%",
   padding: "10px",

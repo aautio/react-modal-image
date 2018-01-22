@@ -47,8 +47,14 @@ export default class extends Component {
     document.removeEventListener("keydown", this.handleKeyDown, false);
   }
 
-  getClickCoordinates = event => {
+  getCoordinatesIfOverImg = event => {
     const e = event.target;
+
+    if (e.id !== "react-modal-fullscreen-img") {
+      // the img was not a target of the coordinates
+      return;
+    }
+
     const dim = this.contentEl.getBoundingClientRect();
     const x = event.clientX - dim.left;
     const y = event.clientY - dim.top;
@@ -59,7 +65,12 @@ export default class extends Component {
   handleMouseDown = event => {
     event.preventDefault();
 
-    const coords = this.getClickCoordinates(event);
+    const coords = this.getCoordinatesIfOverImg(event);
+
+    if (!coords) {
+      // click outside the img => close modal
+      this.props.onClose();
+    }
 
     this.setState(prevState => {
       return {
@@ -74,7 +85,11 @@ export default class extends Component {
   handleMouseMove = event => {
     event.preventDefault();
 
-    const moveEnd = this.getClickCoordinates(event);
+    const coords = this.getCoordinatesIfOverImg(event);
+
+    if (!coords) {
+      return;
+    }
 
     this.setState(prevState => {
       if (!prevState.moveStart) {
@@ -83,8 +98,8 @@ export default class extends Component {
 
       return {
         move: {
-          x: moveEnd.x - prevState.moveStart.x,
-          y: moveEnd.y - prevState.moveStart.y
+          x: coords.x - prevState.moveStart.x,
+          y: coords.y - prevState.moveStart.y
         }
       };
     });
@@ -125,7 +140,6 @@ export default class extends Component {
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
           onMouseMove={this.handleMouseMove}
-          onMouseLeave={this.handleMouseUp}
           ref={el => {
             this.contentEl = el;
           }}
@@ -137,25 +151,35 @@ export default class extends Component {
             </div>
           )}
           <img
+            onContextMenu={event => {
+              event.preventDefault();
+            }}
+            id="react-modal-fullscreen-img"
             style={Object.assign({}, imageStyles, imgTransform)}
             src={fullscreen}
             onLoad={this.hidePlaceholder}
           />
         </div>
         <div style={headerStyles}>
-          <a style={iconStyles} onClick={onClose}>
-            <CloseIcon />
-          </a>
-          <a style={iconWithMarginRightStyles} onClick={this.handleZoomOut}>
-            <ZoomOutIcon />
-          </a>
-          <a style={iconStyles} onClick={this.handleZoomIn}>
-            <ZoomInIcon />
-          </a>
-          <a style={iconWithMarginRightStyles} href={download} download>
-            <DownloadIcon />
-          </a>
-          <p style={captionStyles}>{alt}</p>
+          <span style={{ display: "inline-block", float: "right" }}>
+            <a href={download} style={iconWithMarginRightStyles} download>
+              <DownloadIcon />
+            </a>
+            <a href="" style={iconStyles} onClick={this.handleZoomIn}>
+              <ZoomInIcon />
+            </a>
+            <a
+              href=""
+              style={iconWithMarginRightStyles}
+              onClick={this.handleZoomOut}
+            >
+              <ZoomOutIcon />
+            </a>
+            <a href="" style={iconStyles} onClick={onClose}>
+              <CloseIcon />
+            </a>
+          </span>
+          <span style={captionStyles}>{alt}</span>
         </div>
       </div>
     );
