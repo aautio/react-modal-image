@@ -48,6 +48,11 @@ export const iconWithMarginRightStyles = Object.assign({}, iconStyles, {
   marginRight: "10px"
 });
 
+export const iconMenuStyles = {
+  display: "inline-block",
+  float: "right"
+};
+
 export const captionStyles = {
   display: "inline-block",
   color: "white",

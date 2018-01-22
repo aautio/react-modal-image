@@ -8,6 +8,7 @@ import {
   spacerStyles,
   iconStyles,
   iconWithMarginRightStyles,
+  iconMenuStyles,
   captionStyles,
   headerStyles
 } from "./styles";
@@ -161,7 +162,7 @@ export default class extends Component {
           />
         </div>
         <div style={headerStyles}>
-          <span style={{ display: "inline-block", float: "right" }}>
+          <span style={iconMenuStyles}>
             <a href={download} style={iconWithMarginRightStyles} download>
               <DownloadIcon />
             </a>
