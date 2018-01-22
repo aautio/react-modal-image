@@ -1,23 +1,29 @@
-import expect from 'expect'
-import React from 'react'
-import {render, unmountComponentAtNode} from 'react-dom'
+import expect from "expect";
+import React from "react";
+import { render, unmountComponentAtNode } from "react-dom";
 
-import Component from 'src/'
+import ModalImage from "src/";
 
-describe('Component', () => {
-  let node
+describe("ModalImage", () => {
+  let node;
 
   beforeEach(() => {
-    node = document.createElement('div')
-  })
+    node = document.createElement("div");
+  });
 
   afterEach(() => {
-    unmountComponentAtNode(node)
-  })
+    unmountComponentAtNode(node);
+  });
 
-  it('displays a welcome message', () => {
-    render(<Component/>, node, () => {
-      expect(node.innerHTML).toContain('Welcome to React components')
-    })
-  })
-})
+  it("renders the preview thumbnail", () => {
+    render(
+      <ModalImage preview="http://via.placeholder.com/350x150" alt="Foobar" />,
+      node,
+      () => {
+        expect(node.innerHTML).toContain(
+          '<img src="http://via.placeholder.com/350x150" alt="Foobar" style="cursor: pointer;">'
+        );
+      }
+    );
+  });
+});

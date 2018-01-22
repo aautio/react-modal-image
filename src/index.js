@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 
 import ModalImage from "./ModalImage";
 
@@ -20,7 +20,7 @@ export default class extends Component {
     const { modalOpen } = this.state;
 
     return (
-      <Fragment>
+      <div>
         <img
           style={previewStyles}
           onClick={this.toggleModal}
@@ -35,7 +35,7 @@ export default class extends Component {
             onClose={this.toggleModal}
           />
         )}
-      </Fragment>
+      </div>
     );
   }
 }
