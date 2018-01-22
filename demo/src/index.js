@@ -14,7 +14,7 @@ class Demo extends Component {
           <a href="https://picsum.photos/">https://picsum.photos/</a>.
         </p>
 
-        <p>Square</p>
+        <p>Example of a square image</p>
 
         <ModalImage
           alt="Here is the caption"
@@ -23,7 +23,7 @@ class Demo extends Component {
           download="https://picsum.photos/1000/1000?image=0"
         />
 
-        <p>Vertical</p>
+        <p>Example of a vertical image</p>
 
         <ModalImage
           alt="Here is a caption too"
@@ -32,7 +32,7 @@ class Demo extends Component {
           download="https://picsum.photos/200/1000?image=3"
         />
 
-        <p>Horizontal</p>
+        <p>Example of a horizontal image</p>
 
         <ModalImage
           alt="This is the caption for the third image. This is a long one."
