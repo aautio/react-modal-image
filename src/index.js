@@ -1,23 +1,23 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment, Component } from "react";
 
-import ModalImage from './ModalImage'
+import ModalImage from "./ModalImage";
 
 const previewStyles = {
-  cursor: 'pointer',
-}
+  cursor: "pointer"
+};
 
 export default class extends Component {
-  state = { modalOpen: false }
+  state = { modalOpen: false };
 
   toggleModal = () => {
     this.setState({
-      modalOpen: !this.state.modalOpen,
-    })
-  }
+      modalOpen: !this.state.modalOpen
+    });
+  };
 
   render() {
-    const { preview, src, alt } = this.props
-    const { modalOpen } = this.state
+    const { preview, fullscreen, download, alt } = this.props;
+    const { modalOpen } = this.state;
 
     return (
       <Fragment>
@@ -28,9 +28,14 @@ export default class extends Component {
           alt={alt}
         />
         {modalOpen && (
-          <ModalImage src={src} alt={alt} onClose={this.toggleModal} />
+          <ModalImage
+            fullscreen={fullscreen}
+            download={download}
+            alt={alt}
+            onClose={this.toggleModal}
+          />
         )}
       </Fragment>
-    )
+    );
   }
 }
