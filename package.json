@@ -1,13 +1,10 @@
 {
   "name": "react-modal-image",
-  "version": "1.0.1",
-  "description": "react-modal-image",
+  "version": "1.0.2",
+  "description": "Lightweight Lightbox React Component",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": [
-    "es",
-    "lib"
-  ],
+  "files": ["es", "lib"],
   "scripts": {
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
@@ -26,7 +23,5 @@
   },
   "author": "Ari Autio <ari.autio@iki.fi>",
   "license": "MIT",
-  "keywords": [
-    "react-component"
-  ]
+  "keywords": ["react-component", "lightbox", "modal", "image", "react"]
 }
