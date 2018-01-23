@@ -42,7 +42,7 @@ import ModalImage from 'react-modal-image'
 
 [build-badge]: https://img.shields.io/travis/aautio/react-modal-image/master.png?style=flat-square
 [build]: https://travis-ci.org/aautio/react-modal-image
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+[npm-badge]: https://img.shields.io/npm/v/react-modal-image.png?style=flat-square
+[npm]: https://www.npmjs.org/package/react-modal-image
 [coveralls-badge]: https://img.shields.io/coveralls/aautio/react-modal-image/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/aautio/react-modal-image
