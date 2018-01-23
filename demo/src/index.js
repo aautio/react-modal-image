@@ -3,44 +3,58 @@ import { render } from "react-dom";
 
 import ModalImage from "../../src";
 
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+
 class Demo extends Component {
   render() {
+    const scope = { ModalImage };
+
+    const demoCode = `<ModalImage
+  alt="Here is the caption"
+  preview="https://picsum.photos/200/200?image=0"
+  fullscreen="https://picsum.photos/1024/1024?image=0"
+  download="https://picsum.photos/2048/2048?image=0"
+/>
+`;
+
     return (
-      <div>
-        <h1>react-modal-image</h1>
+      <LiveProvider scope={scope} code={demoCode}>
+        <h2>You start with the imports</h2>
+        <pre>import ModalImage from 'react-modal-image';</pre>
+
+        <h2>then set up the component</h2>
+        <LiveEditor style={{ marginTop: "20px", marginBottom: "20px" }} />
+        <LiveError
+          style={{
+            marginTop: "20px",
+            marginBottom: "20px",
+            padding: "20px",
+            backgroundColor: "lightpink"
+          }}
+        />
+        <h2>and try it out in action </h2>
+        <LivePreview />
+        <p>^ click the image above</p>
+
+        <h2>Further info</h2>
 
         <p>
-          Images for the demo are provided by{" "}
-          <a href="https://picsum.photos/">https://picsum.photos/</a>.
+          Project is hosted at{" "}
+          <a href="https://github.com/aautio/react-modal-image">Github</a>
         </p>
-
-        <p>Example of a square image</p>
-
-        <ModalImage
-          alt="Here is the caption"
-          preview="https://picsum.photos/100/100?image=0"
-          fullscreen="https://picsum.photos/500/500?image=0"
-          download="https://picsum.photos/1000/1000?image=0"
-        />
-
-        <p>Example of a vertical image</p>
-
-        <ModalImage
-          alt="Here is a caption too"
-          preview="https://picsum.photos/20/100?image=3"
-          fullscreen="https://picsum.photos/100/500?image=3"
-          download="https://picsum.photos/200/1000?image=3"
-        />
-
-        <p>Example of a horizontal image</p>
-
-        <ModalImage
-          alt="This is the caption for the third image. This is a long one."
-          preview="https://picsum.photos/100/20?image=2"
-          fullscreen="https://picsum.photos/500/100?image=2"
-          download="https://picsum.photos/1000/200?image=2"
-        />
-      </div>
+        <p>
+          The live editor is made with{" "}
+          <a href="https://github.com/FormidableLabs/react-live">react-live</a>.
+        </p>
+        <p>
+          Images for the demo are provided by{" "}
+          <a href="https://picsum.photos/">Lorem Picsum</a>.
+        </p>
+        <p>
+          Everything is put together with{" "}
+          <a href="https://github.com/insin/nwb">nwb</a>.
+        </p>
+      </LiveProvider>
     );
   }
 }
