@@ -49,16 +49,16 @@ export default class extends Component {
   }
 
   getCoordinatesIfOverImg = event => {
-    const e = event.target;
+    const point = event.changedTouches ? event.changedTouches[0] : event;
 
-    if (e.id !== "react-modal-fullscreen-img") {
+    if (point.target.id !== "react-modal-fullscreen-img") {
       // the img was not a target of the coordinates
       return;
     }
 
     const dim = this.contentEl.getBoundingClientRect();
-    const x = event.clientX - dim.left;
-    const y = event.clientY - dim.top;
+    const x = point.clientX - dim.left;
+    const y = point.clientY - dim.top;
 
     return { x, y };
   };
@@ -66,11 +66,12 @@ export default class extends Component {
   handleMouseDownOrTouchStart = event => {
     event.preventDefault();
 
-    const coords = this.getCoordinatesIfOverImg(
-      event.changedTouches
-        ? event.changedTouches[event.changedTouches.length - 1]
-        : event
-    );
+    if (event.changedTouches && event.changedTouches.length > 1) {
+      // more than one finger, ignored
+      return;
+    }
+
+    const coords = this.getCoordinatesIfOverImg(event);
 
     if (!coords) {
       // click outside the img => close modal
@@ -90,11 +91,12 @@ export default class extends Component {
   handleMouseMoveOrTouchMove = event => {
     event.preventDefault();
 
-    const coords = this.getCoordinatesIfOverImg(
-      event.changedTouches
-        ? event.changedTouches[event.changedTouches.length - 1]
-        : event
-    );
+    if (event.changedTouches && event.changedTouches.length > 1) {
+      // more than one finger, ignored
+      return;
+    }
+
+    const coords = this.getCoordinatesIfOverImg(event);
 
     if (!coords) {
       return;
