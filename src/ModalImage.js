@@ -130,9 +130,9 @@ export default class extends Component {
     const { loading, zoom, move } = this.state;
 
     const imgTransform = {
-      transform: `translate(calc(-50% + ${move.x}px), calc(-50% + ${
+      transform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${
         move.y
-      }px)) scale(${zoom})`
+      }px, 0) ${zoom > 1 ? `scale3d(${zoom}, ${zoom}, 1)` : ""}`
     };
 
     return (
