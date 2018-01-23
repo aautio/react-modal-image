@@ -22,7 +22,7 @@ You need to provide a polyfill for `Object.assign()` in your app to support old 
 
 ## API
 
-```
+```js
 import ModalImage from 'react-modal-image'
 
 <ModalImage
@@ -33,12 +33,12 @@ import ModalImage from 'react-modal-image'
 />
 ```
 
-| Prop         | Type     | Description                                                                      |
-| ------------ | -------- | -------------------------------------------------------------------------------- |
-| `alt`        | `String` | alt text for the preview img and shown as a caption when the Lightbox is open.   |
-| `preview`    | `URL`    | The small img to be rendered. Clicking the image will open Lightbox.             |
-| `fullscreen` | `URL`    | This is shown if Lightbox is open. Can be zoomed in/out and dragged around.      |
-| `download`   | `URL`    | Image to be downloaded when you click the download icon on the top right corner. |
+| Prop         | Type     | Description                                                      |
+| ------------ | -------- | ---------------------------------------------------------------- |
+| `alt`        | `String` | alt text for the preview img and the header in Lightbox.         |
+| `preview`    | `URL`    | The small preview img. Click to open Lightbox.                   |
+| `fullscreen` | `URL`    | Image shown in Lightbox.                                         |
+| `download`   | `URL`    | Download the image by clicking the icon in the top right corner. |
 
 [build-badge]: https://img.shields.io/travis/aautio/react-modal-image/master.png?style=flat-square
 [build]: https://travis-ci.org/aautio/react-modal-image
