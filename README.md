@@ -6,6 +6,8 @@
 
 This is a tiny React component providing modal image Lightbox.
 
+[DEMO](https://aautio.github.io/react-modal-image/)
+
 ## Features
 
 * Only _3 kB_ when gzipped.
