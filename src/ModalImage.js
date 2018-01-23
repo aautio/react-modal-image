@@ -63,10 +63,14 @@ export default class extends Component {
     return { x, y };
   };
 
-  handleMouseDown = event => {
+  handleMouseDownOrTouchStart = event => {
     event.preventDefault();
 
-    const coords = this.getCoordinatesIfOverImg(event);
+    const coords = this.getCoordinatesIfOverImg(
+      event.changedTouches
+        ? event.changedTouches[event.changedTouches.length - 1]
+        : event
+    );
 
     if (!coords) {
       // click outside the img => close modal
@@ -83,10 +87,14 @@ export default class extends Component {
     });
   };
 
-  handleMouseMove = event => {
+  handleMouseMoveOrTouchMove = event => {
     event.preventDefault();
 
-    const coords = this.getCoordinatesIfOverImg(event);
+    const coords = this.getCoordinatesIfOverImg(
+      event.changedTouches
+        ? event.changedTouches[event.changedTouches.length - 1]
+        : event
+    );
 
     if (!coords) {
       return;
@@ -106,7 +114,7 @@ export default class extends Component {
     });
   };
 
-  handleMouseUp = event => {
+  handleMouseUpOrTouchEnd = event => {
     this.setState({
       moveStart: undefined
     });
@@ -138,9 +146,12 @@ export default class extends Component {
     return (
       <div style={modalStyles}>
         <div
-          onMouseDown={this.handleMouseDown}
-          onMouseUp={this.handleMouseUp}
-          onMouseMove={this.handleMouseMove}
+          onMouseDown={this.handleMouseDownOrTouchStart}
+          onMouseUp={this.handleMouseUpOrTouchEnd}
+          onMouseMove={this.handleMouseMoveOrTouchMove}
+          onTouchStart={this.handleMouseDownOrTouchStart}
+          onTouchEnd={this.handleMouseUpOrTouchEnd}
+          onTouchMove={this.handleMouseMoveOrTouchMove}
           ref={el => {
             this.contentEl = el;
           }}

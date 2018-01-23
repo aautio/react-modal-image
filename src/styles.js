@@ -6,7 +6,8 @@ export const modalStyles = {
   width: "100%",
   height: "100%",
   overflow: "auto",
-  backgroundColor: "rgba(0, 0, 0, 0.8)"
+  backgroundColor: "rgba(0, 0, 0, 0.8)",
+  touchAction: "none"
 };
 
 export const modalContentStyles = {
