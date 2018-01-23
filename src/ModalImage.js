@@ -66,7 +66,7 @@ export default class extends Component {
   handleMouseDownOrTouchStart = event => {
     event.preventDefault();
 
-    if (event.changedTouches && event.changedTouches.length > 1) {
+    if (event.touches && event.touches.length > 1) {
       // more than one finger, ignored
       return;
     }
@@ -91,7 +91,7 @@ export default class extends Component {
   handleMouseMoveOrTouchMove = event => {
     event.preventDefault();
 
-    if (event.changedTouches && event.changedTouches.length > 1) {
+    if (event.touches && event.touches.length > 1) {
       // more than one finger, ignored
       return;
     }
