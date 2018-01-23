@@ -7,6 +7,7 @@
   "files": ["es", "lib"],
   "scripts": {
     "build": "nwb build-react-component",
+    "postpublish": "gh-pages -d demo/dist",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
@@ -17,6 +18,7 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "gh-pages": "^1.1.0",
     "nwb": "0.21.x",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
