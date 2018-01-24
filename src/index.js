@@ -13,7 +13,7 @@ export default class extends Component {
   };
 
   render() {
-    const { preview, fullscreen, download, alt } = this.props;
+    const { preview, previewSrcSet, fullscreen, download, alt } = this.props;
     const { modalOpen } = this.state;
 
     return (
@@ -22,6 +22,7 @@ export default class extends Component {
           style={previewStyles}
           onClick={this.toggleModal}
           src={preview}
+          srcSet={previewSrcSet}
           alt={alt}
         />
         {modalOpen && (
