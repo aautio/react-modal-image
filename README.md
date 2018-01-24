@@ -4,7 +4,7 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-This is a tiny React component providing modal image Lightbox.
+A tiny an a simple React component providing modal image Lightbox.
 
 [DEMO](https://aautio.github.io/react-modal-image/)
 
@@ -18,7 +18,7 @@ This is a tiny React component providing modal image Lightbox.
 * Download button
 * Zoom and move the image
 
-You need to provide a polyfill for `Object.assign()` in your app to support old Internet Explorers.
+You need to bring your own `Object.assign()` polyfill if you use old Internet Explorers.
 
 ## API
 
@@ -27,18 +27,20 @@ import ModalImage from 'react-modal-image'
 
 <ModalImage
   preview={urlToTinyImageFile}
+  previewSrcSet={srcSetDefToTinyImageFile}
   fullscreen={urlToLargeImageFile}
   download={urlToHugeImageFile}
   alt="Hello World!"
 />
 ```
 
-| Prop         | Type     | Description                                                      |
-| ------------ | -------- | ---------------------------------------------------------------- |
-| `alt`        | `String` | alt text for the preview img and the header in Lightbox.         |
-| `preview`    | `URL`    | The small preview img. Click to open Lightbox.                   |
-| `fullscreen` | `URL`    | Image shown in Lightbox.                                         |
-| `download`   | `URL`    | Download the image by clicking the icon in the top right corner. |
+| Prop            | Type     |          | Description                                                      |
+| --------------- | -------- | -------- | ---------------------------------------------------------------- |
+| `alt`           | `String` | Optional | alt text for the preview img and the header in Lightbox.         |
+| `preview`       | `URL`    | Required | `src` for the small preview img.                                 |
+| `previewSrcSet` | `String` | Optional | `srcSet` for the small preview imgs.                             |
+| `fullscreen`    | `URL`    | Required | Image shown in Lightbox.                                         |
+| `download`      | `URL`    | Optional | Download the image by clicking the icon in the top right corner. |
 
 [build-badge]: https://img.shields.io/travis/aautio/react-modal-image/master.png?style=flat-square
 [build]: https://travis-ci.org/aautio/react-modal-image
