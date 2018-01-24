@@ -176,9 +176,11 @@ export default class extends Component {
         </div>
         <div style={headerStyles}>
           <span style={iconMenuStyles}>
-            <a href={download} style={iconWithMarginRightStyles} download>
-              <DownloadIcon />
-            </a>
+            {download && (
+              <a href={download} style={iconWithMarginRightStyles} download>
+                <DownloadIcon />
+              </a>
+            )}
             <a href="" style={iconStyles} onClick={this.handleZoomIn}>
               <ZoomInIcon />
             </a>
