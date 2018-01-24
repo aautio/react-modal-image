@@ -36,8 +36,7 @@ export const imageStyles = {
   top: "50%",
   left: "50%",
   maxWidth: "98%",
-  maxHeight: "98%",
-  cursor: "move"
+  maxHeight: "98%"
 };
 
 export const iconStyles = {

@@ -21,7 +21,7 @@ describe("ModalImage", () => {
       node,
       () => {
         expect(node.innerHTML).toContain(
-          '<img src="http://via.placeholder.com/350x150" alt="Foobar" style="cursor: pointer;">'
+          '<img src="http://via.placeholder.com/350x150" alt="Foobar" style="cursor: pointer; max-width: 100%; max-height: 100%;">'
         );
       }
     );

@@ -78,6 +78,11 @@ export default class extends Component {
       this.props.onClose();
     }
 
+    if (this.state.zoom === 1) {
+      // do not allow drag'n'drop if zoom has not been applied
+      return;
+    }
+
     this.setState(prevState => {
       return {
         moveStart: {
@@ -90,6 +95,11 @@ export default class extends Component {
 
   handleMouseMoveOrTouchMove = event => {
     event.preventDefault();
+
+    if (this.state.zoom === 1) {
+      // do not allow drag'n'drop if zoom has not been applied
+      return;
+    }
 
     if (event.touches && event.touches.length > 1) {
       // more than one finger, ignored
@@ -130,7 +140,9 @@ export default class extends Component {
   handleZoomOut = event => {
     event.preventDefault();
     this.setState(prevState => ({
-      zoom: prevState.zoom / 1.5 < 1 ? 1 : prevState.zoom / 1.5
+      zoom: prevState.zoom / 1.5 <= 1 ? 1 : prevState.zoom / 1.5,
+      // reset position if zoome out all the way
+      move: prevState.zoom / 1.5 <= 1 ? { x: 0, y: 0 } : prevState.move
     }));
   };
 
@@ -140,6 +152,7 @@ export default class extends Component {
     const { loading, zoom, move } = this.state;
 
     const imgTransform = {
+      cursor: zoom > 1 ? "move" : undefined,
       transform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${
         move.y
       }px, 0) ${zoom > 1 ? `scale3d(${zoom}, ${zoom}, 1)` : ""}`
