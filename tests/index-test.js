@@ -15,9 +15,9 @@ describe("ModalImage", () => {
     unmountComponentAtNode(node);
   });
 
-  it("renders the preview thumbnail", () => {
+  it("renders the small thumbnail", () => {
     render(
-      <ModalImage preview="http://via.placeholder.com/350x150" alt="Foobar" />,
+      <ModalImage small="http://via.placeholder.com/350x150" alt="Foobar" />,
       node,
       () => {
         expect(node.innerHTML).toContain(

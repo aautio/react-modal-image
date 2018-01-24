@@ -1,10 +1,10 @@
-export const previewStyles = {
+export const smallImage = {
   cursor: "pointer",
   maxWidth: "100%",
   maxHeight: "100%"
 };
 
-export const modalStyles = {
+export const modal = {
   position: "fixed",
   zIndex: 1000,
   left: 0,
@@ -16,7 +16,7 @@ export const modalStyles = {
   touchAction: "none"
 };
 
-export const modalContentStyles = {
+export const modalContent = {
   textAlign: "center",
   position: "relative",
   height: "100%",
@@ -24,42 +24,48 @@ export const modalContentStyles = {
   overflow: "hidden"
 };
 
-export const spinnerStyles = {
+export const spinner = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)"
 };
 
-export const imageStyles = {
+export const mediumImage = {
   position: "absolute",
   top: "50%",
   left: "50%",
+  transform: "translate3d(-50%, -50%, 0)",
   maxWidth: "98%",
   maxHeight: "98%"
 };
 
-export const iconStyles = {
+export const largeImage = (x, y) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: `translate3d(-50%, -50%, 0) translate3d(${x}px, ${y}px, 0)`,
+  cursor: "move"
+});
+
+export const icon = {
   fontSize: "40px",
   cursor: "pointer",
   lineHeight: "40px",
   boxSizing: "border-box",
   border: "none",
   padding: "0px 5px 0px 5px",
+  marginLeft: "10px",
   color: "white",
   backgroundColor: "rgba(0, 0, 0, 0)"
 };
 
-export const iconWithMarginRightStyles = Object.assign({}, iconStyles, {
-  marginRight: "10px"
-});
-
-export const iconMenuStyles = {
+export const iconMenu = {
   display: "inline-block",
   float: "right"
 };
 
-export const captionStyles = {
+export const caption = {
   display: "inline-block",
   color: "white",
   fontSize: "120%",
@@ -67,7 +73,7 @@ export const captionStyles = {
   margin: "0"
 };
 
-export const headerStyles = {
+export const header = {
   position: "absolute",
   top: 0,
   width: "100%",

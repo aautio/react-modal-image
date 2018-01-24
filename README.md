@@ -8,6 +8,10 @@ A tiny an a simple React component providing modal image Lightbox.
 
 [DEMO](https://aautio.github.io/react-modal-image/)
 
+## Usage
+
+You'll provide 3 images, a small, medium size and a large one. The component will display the small one by default and open a Lightbox for the medium & large ones if clicked.
+
 ## Features
 
 * Only _3 kB_ when gzipped.
@@ -18,29 +22,62 @@ A tiny an a simple React component providing modal image Lightbox.
 * Download button
 * Zoom and move the image
 
-You need to bring your own `Object.assign()` polyfill if you use old Internet Explorers.
+You need to bring your own `Set` polyfill if you use old Internet Explorers.
 
-## API
+## Simple API
 
 ```js
 import ModalImage from 'react-modal-image'
 
 <ModalImage
-  preview={urlToTinyImageFile}
-  previewSrcSet={srcSetDefToTinyImageFile}
-  fullscreen={urlToLargeImageFile}
-  download={urlToHugeImageFile}
+  small={urlToTinyImageFile}
+  smallSrcSet={srcSetDefToTinyImageFile}
+  medium={urlToLargeImageFile}
+  large={urlToHugeImageFile}
   alt="Hello World!"
 />
 ```
 
-| Prop            | Type     |          | Description                                                      |
-| --------------- | -------- | -------- | ---------------------------------------------------------------- |
-| `alt`           | `String` | Optional | alt text for the preview img and the header in Lightbox.         |
-| `preview`       | `URL`    | Required | `src` for the small preview img.                                 |
-| `previewSrcSet` | `String` | Optional | `srcSet` for the small preview imgs.                             |
-| `fullscreen`    | `URL`    | Required | Image shown in Lightbox.                                         |
-| `download`      | `URL`    | Optional | Download the image by clicking the icon in the top right corner. |
+| Prop          | Type     | Description                                            |
+| ------------- | -------- | ------------------------------------------------------ |
+| `alt`         | `String` | alt text for the small img and the header in Lightbox. |
+| `small`       | `URL`    | `src` for the small small img.                         |
+| `smallSrcSet` | `String` | `srcSet` for the small small imgs.                     |
+| `medium`      | `URL`    | Image shown in Lightbox.                               |
+| `large`       | `URL`    | Image shown when zoomed in Lightbox. Downloadable.     |
+
+## Lightbox-only API
+
+You can also choose to import only the Lightbox.
+
+To use the Lightbox only, you'll need to handle the open state by yourself:
+
+```js
+import { Lightbox } from "react-modal-image";
+
+// ...
+
+const closeLightbox = () => {
+  this.state.open = true;
+};
+
+// ...
+
+{
+  this.state.open && (
+    <Lightbox
+      medium={urlToLargeImageFile}
+      large={urlToHugeImageFile}
+      alt="Hello World!"
+      onClose={this.closeLightbox}
+    />
+  );
+}
+```
+
+| Prop      | Type       | Description                                             |
+| --------- | ---------- | ------------------------------------------------------- |
+| `onClose` | `function` | Will be invoked when the Lightbox requests to be closed |
 
 [build-badge]: https://img.shields.io/travis/aautio/react-modal-image/master.png?style=flat-square
 [build]: https://travis-ci.org/aautio/react-modal-image

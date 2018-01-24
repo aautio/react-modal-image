@@ -1,17 +1,6 @@
 import React, { Component } from "react";
 
-import {
-  modalStyles,
-  modalContentStyles,
-  spinnerStyles,
-  imageStyles,
-  spacerStyles,
-  iconStyles,
-  iconWithMarginRightStyles,
-  iconMenuStyles,
-  captionStyles,
-  headerStyles
-} from "./styles";
+import * as style from "./styles";
 
 import {
   ZoomInIcon,
@@ -23,14 +12,19 @@ import {
 
 export default class extends Component {
   state = {
-    loading: true,
+    mediumImgLoading: true,
+    largeImgLoading: true,
     move: { x: 0, y: 0 },
     moveStart: undefined,
-    zoom: 1
+    zoomed: false
   };
 
-  hidePlaceholder = () => {
-    this.setState({ loading: false });
+  mediumLoaded = () => {
+    this.setState({ mediumImgLoading: false });
+  };
+
+  largeLoaded = () => {
+    this.setState({ largeImgLoading: false });
   };
 
   handleKeyDown = event => {
@@ -51,7 +45,7 @@ export default class extends Component {
   getCoordinatesIfOverImg = event => {
     const point = event.changedTouches ? event.changedTouches[0] : event;
 
-    if (point.target.id !== "react-modal-fullscreen-img") {
+    if (point.target.id !== "react-modal-image-img") {
       // the img was not a target of the coordinates
       return;
     }
@@ -78,7 +72,7 @@ export default class extends Component {
       this.props.onClose();
     }
 
-    if (this.state.zoom === 1) {
+    if (!this.state.zoomed) {
       // do not allow drag'n'drop if zoom has not been applied
       return;
     }
@@ -96,7 +90,7 @@ export default class extends Component {
   handleMouseMoveOrTouchMove = event => {
     event.preventDefault();
 
-    if (this.state.zoom === 1) {
+    if (!this.state.zoomed) {
       // do not allow drag'n'drop if zoom has not been applied
       return;
     }
@@ -132,34 +126,22 @@ export default class extends Component {
     });
   };
 
-  handleZoomIn = event => {
-    event.preventDefault();
-    this.setState(prevState => ({ zoom: prevState.zoom * 1.5 }));
-  };
-
-  handleZoomOut = event => {
+  toggleZoom = event => {
     event.preventDefault();
     this.setState(prevState => ({
-      zoom: prevState.zoom / 1.5 <= 1 ? 1 : prevState.zoom / 1.5,
-      // reset position if zoome out all the way
-      move: prevState.zoom / 1.5 <= 1 ? { x: 0, y: 0 } : prevState.move
+      zoomed: !prevState.zoomed,
+      // reset position if zoomed out
+      move: prevState.zoomed ? { x: 0, y: 0 } : prevState.move
     }));
   };
 
   render() {
-    const { fullscreen, download, alt, onClose } = this.props;
+    const { medium, large, alt, onClose } = this.props;
 
-    const { loading, zoom, move } = this.state;
-
-    const imgTransform = {
-      cursor: zoom > 1 ? "move" : undefined,
-      transform: `translate3d(-50%, -50%, 0) translate3d(${move.x}px, ${
-        move.y
-      }px, 0) ${zoom > 1 ? `scale3d(${zoom}, ${zoom}, 1)` : ""}`
-    };
+    const { mediumImgLoading, largeImgLoading, move, zoomed } = this.state;
 
     return (
-      <div style={modalStyles}>
+      <div style={style.modal}>
         <div
           onMouseDown={this.handleMouseDownOrTouchStart}
           onMouseUp={this.handleMouseUpOrTouchEnd}
@@ -167,48 +149,59 @@ export default class extends Component {
           onTouchStart={this.handleMouseDownOrTouchStart}
           onTouchEnd={this.handleMouseUpOrTouchEnd}
           onTouchMove={this.handleMouseMoveOrTouchMove}
+          onDoubleClick={this.toggleZoom}
           ref={el => {
             this.contentEl = el;
           }}
-          style={modalContentStyles}
+          style={style.modalContent}
         >
-          {loading && (
-            <div style={spinnerStyles}>
-              <SpinnerIcon />
+          {!zoomed && (
+            <div>
+              {mediumImgLoading && (
+                <div style={style.spinner}>
+                  <SpinnerIcon />
+                </div>
+              )}
+              <img
+                onContextMenu={event => {
+                  event.preventDefault();
+                }}
+                id="react-modal-image-img"
+                style={style.mediumImage}
+                src={medium}
+                onLoad={this.mediumLoaded}
+              />
             </div>
           )}
-          <img
-            onContextMenu={event => {
-              event.preventDefault();
-            }}
-            id="react-modal-fullscreen-img"
-            style={Object.assign({}, imageStyles, imgTransform)}
-            src={fullscreen}
-            onLoad={this.hidePlaceholder}
-          />
+          {zoomed && (
+            <div>
+              {largeImgLoading && (
+                <div style={style.spinner}>
+                  <SpinnerIcon />
+                </div>
+              )}
+              <img
+                id="react-modal-image-img"
+                style={style.largeImage(move.x, move.y)}
+                src={large}
+                onLoad={this.largeLoaded}
+              />
+            </div>
+          )}
         </div>
-        <div style={headerStyles}>
-          <span style={iconMenuStyles}>
-            {download && (
-              <a href={download} style={iconWithMarginRightStyles} download>
-                <DownloadIcon />
-              </a>
-            )}
-            <a href="" style={iconStyles} onClick={this.handleZoomIn}>
-              <ZoomInIcon />
+        <div style={style.header}>
+          <span style={style.iconMenu}>
+            <a href={large} style={style.icon} download>
+              <DownloadIcon />
             </a>
-            <a
-              href=""
-              style={iconWithMarginRightStyles}
-              onClick={this.handleZoomOut}
-            >
-              <ZoomOutIcon />
+            <a href="" style={style.icon} onClick={this.toggleZoom}>
+              {zoomed ? <ZoomOutIcon /> : <ZoomInIcon />}
             </a>
-            <a style={iconStyles} onClick={onClose}>
+            <a style={style.icon} onClick={onClose}>
               <CloseIcon />
             </a>
           </span>
-          <span style={captionStyles}>{alt}</span>
+          <span style={style.caption}>{alt}</span>
         </div>
       </div>
     );

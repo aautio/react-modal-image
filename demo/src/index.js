@@ -14,9 +14,9 @@ class Demo extends Component {
 
         <pre>{`<ModalImage
   alt="Here is the caption"
-  preview="https://picsum.photos/200/200?image=0"
-  fullscreen="https://picsum.photos/1024/1024?image=0"
-  download="https://picsum.photos/2048/2048?image=0"
+  small="https://picsum.photos/200/200?image=1"
+  medium="https://picsum.photos/1024/1024?image=1"
+  large="https://picsum.photos/2048/2048?image=1"
 />
       `}</pre>
 
@@ -24,9 +24,9 @@ class Demo extends Component {
 
         <ModalImage
           alt="Here is the caption"
-          preview="https://picsum.photos/200/200?image=0"
-          fullscreen="https://picsum.photos/1024/1024?image=0"
-          download="https://picsum.photos/2048/2048?image=0"
+          small="https://picsum.photos/200/200?image=1"
+          medium="https://picsum.photos/1024/1024?image=1"
+          large="https://picsum.photos/2048/2048?image=1"
         />
         <p>^ click the image above</p>
 
