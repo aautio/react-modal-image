@@ -1,6 +1,6 @@
 {
   "name": "react-modal-image",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "Lightweight Lightbox React Component",
   "main": "lib/index.js",
   "module": "es/index.js",
