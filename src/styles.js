@@ -1,3 +1,9 @@
+export const previewStyles = {
+  cursor: "pointer",
+  maxWidth: "100%",
+  maxHeight: "100%"
+};
+
 export const modalStyles = {
   position: "fixed",
   zIndex: 1000,

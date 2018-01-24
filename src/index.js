@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 
-import ModalImage from "./ModalImage";
-
-const previewStyles = {
-  cursor: "pointer"
-};
+import { previewStyles } from "./styles";
+import Lightbox from "./Lightbox";
 
 export default class extends Component {
   state = { modalOpen: false };
@@ -28,7 +25,7 @@ export default class extends Component {
           alt={alt}
         />
         {modalOpen && (
-          <ModalImage
+          <Lightbox
             fullscreen={fullscreen}
             download={download}
             alt={alt}
