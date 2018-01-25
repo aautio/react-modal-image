@@ -49,6 +49,7 @@ export const largeImage = (x, y) => ({
 });
 
 export const icon = {
+  display: "inline-block",
   fontSize: "40px",
   cursor: "pointer",
   lineHeight: "40px",
