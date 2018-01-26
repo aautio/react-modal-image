@@ -135,29 +135,49 @@ export default class extends Component {
     }));
   };
 
+  renderImage({ src, placeholder, styles, handleOnLoad, handleOnContextMenu }) {
+    return (
+      <div>
+        {placeholder && (
+          <div style={style.spinner}>
+            <SpinnerIcon />
+          </div>
+        )}
+        <img
+          onDoubleClick={this.toggleZoom}
+          onContextMenu={handleOnContextMenu}
+          id="react-modal-image-img"
+          style={styles}
+          src={src}
+          onLoad={handleOnLoad}
+        />
+      </div>
+    );
+  }
+
   render() {
     const { medium, large, alt, onClose } = this.props;
     const { mediumImgLoading, largeImgLoading, move, zoomed } = this.state;
 
-    const content = zoomed
-      ? {
-          placeholder: large ? largeImgLoading : mediumImgLoading,
-          style: style.largeImage(move.x, move.y),
-          handleOnLoad: this.largeLoaded,
-          src: large || medium
-        }
-      : {
-          placeholder: medium ? mediumImgLoading : largeImgLoading,
-          style: style.mediumImage,
-          handleOnLoad: this.mediumLoaded,
-          src: medium || large,
-          handleOnContextMenu: event => {
-            // prevent context menu from being opened
-            // over a medium img to enforce download of only
-            // large images
-            large && medium && event.preventDefault();
-          }
-        };
+    const largeImage = this.renderImage({
+      placeholder: large ? largeImgLoading : mediumImgLoading,
+      styles: style.largeImage(move.x, move.y),
+      handleOnLoad: this.largeLoaded,
+      src: large || medium
+    });
+
+    const mediumImage = this.renderImage({
+      placeholder: medium ? mediumImgLoading : largeImgLoading,
+      styles: style.mediumImage,
+      handleOnLoad: this.mediumLoaded,
+      src: medium || large,
+      handleOnContextMenu: event => {
+        // prevent context menu from being opened
+        // over a medium img to enforce download of only
+        // large images
+        large && medium && event.preventDefault();
+      }
+    });
 
     return (
       <div style={style.modal}>
@@ -173,21 +193,8 @@ export default class extends Component {
           }}
           style={style.modalContent}
         >
-          <div>
-            {content.placeholder && (
-              <div style={style.spinner}>
-                <SpinnerIcon />
-              </div>
-            )}
-            <img
-              onDoubleClick={this.toggleZoom}
-              onContextMenu={content.handleOnContextMenu}
-              id="react-modal-image-img"
-              style={content.style}
-              src={content.src}
-              onLoad={content.handleOnLoad}
-            />
-          </div>
+          {zoomed && largeImage}
+          {!zoomed && mediumImage}
         </div>
         <div style={style.header}>
           <span style={style.iconMenu}>

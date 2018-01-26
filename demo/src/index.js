@@ -14,9 +14,9 @@ class Demo extends Component {
         <div style={{ maxWidth: "400px" }}>
           <ModalImage
             alt="Here is the caption"
-            small={require("./example_img_small.jpg")}
-            medium={require("./example_img_medium.jpg")}
-            large={require("./example_img_large.jpg")}
+            small="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_small.jpg"
+            medium="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_medium.jpg"
+            large="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_large.jpg"
           />
         </div>
         <p>^ click or inspect the image above</p>
@@ -25,8 +25,8 @@ class Demo extends Component {
 
         <div style={{ maxWidth: "400px" }}>
           <ModalImage
-            small={require("./example_img_small.jpg")}
-            large={require("./example_img_large.jpg")}
+            small="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_small.jpg"
+            large="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_large.jpg"
           />
         </div>
         <p>^ click or inspect the image above</p>
@@ -35,8 +35,8 @@ class Demo extends Component {
 
         <div style={{ maxWidth: "400px" }}>
           <ModalImage
-            small={require("./example_img_small.jpg")}
-            medium={require("./example_img_medium.jpg")}
+            small="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_small.jpg"
+            medium="https://raw.githubusercontent.com/aautio/react-modal-image/master/demo/src/example_img_medium.jpg"
           />
         </div>
         <p>^ click or inspect the image above</p>
