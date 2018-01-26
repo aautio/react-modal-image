@@ -38,13 +38,14 @@ import ModalImage from 'react-modal-image'
 />
 ```
 
-| Prop          | Type     | Description                                            |
-| ------------- | -------- | ------------------------------------------------------ |
-| `alt`         | `String` | alt text for the small img and the header in Lightbox. |
-| `small`       | `URL`    | `src` for the small small img.                         |
-| `smallSrcSet` | `String` | `srcSet` for the small small imgs.                     |
-| `medium`      | `URL`    | Image shown in Lightbox.                               |
-| `large`       | `URL`    | Image shown when zoomed in Lightbox. Downloadable.     |
+| Prop          | Type     | Description                                              |
+| ------------- | -------- | -------------------------------------------------------- |
+| `className`   | `String` | `class` for the small preview image,                     |
+| `alt`         | `String` | alt text for the small image and the header in Lightbox. |
+| `small`       | `URL`    | `src` for the small preview image.                       |
+| `smallSrcSet` | `String` | `srcSet` for the small preview image.                    |
+| `medium`      | `URL`    | Image shown in Lightbox.                                 |
+| `large`       | `URL`    | Image shown when zoomed in Lightbox. Downloadable.       |
 
 ## Lightbox-only API
 
