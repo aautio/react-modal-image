@@ -137,8 +137,27 @@ export default class extends Component {
 
   render() {
     const { medium, large, alt, onClose } = this.props;
-
     const { mediumImgLoading, largeImgLoading, move, zoomed } = this.state;
+
+    const content = zoomed
+      ? {
+          placeholder: large ? largeImgLoading : mediumImgLoading,
+          style: style.largeImage(move.x, move.y),
+          handleOnLoad: this.largeLoaded,
+          src: large || medium
+        }
+      : {
+          placeholder: medium ? mediumImgLoading : largeImgLoading,
+          style: style.mediumImage,
+          handleOnLoad: this.mediumLoaded,
+          src: medium || large,
+          handleOnContextMenu: event => {
+            // prevent context menu from being opened
+            // over a medium img to enforce download of only
+            // large images
+            large && medium && event.preventDefault();
+          }
+        };
 
     return (
       <div style={style.modal}>
@@ -149,49 +168,30 @@ export default class extends Component {
           onTouchStart={this.handleMouseDownOrTouchStart}
           onTouchEnd={this.handleMouseUpOrTouchEnd}
           onTouchMove={this.handleMouseMoveOrTouchMove}
-          onDoubleClick={this.toggleZoom}
           ref={el => {
             this.contentEl = el;
           }}
           style={style.modalContent}
         >
-          {!zoomed && (
-            <div>
-              {mediumImgLoading && (
-                <div style={style.spinner}>
-                  <SpinnerIcon />
-                </div>
-              )}
-              <img
-                onContextMenu={event => {
-                  event.preventDefault();
-                }}
-                id="react-modal-image-img"
-                style={style.mediumImage}
-                src={medium}
-                onLoad={this.mediumLoaded}
-              />
-            </div>
-          )}
-          {zoomed && (
-            <div>
-              {largeImgLoading && (
-                <div style={style.spinner}>
-                  <SpinnerIcon />
-                </div>
-              )}
-              <img
-                id="react-modal-image-img"
-                style={style.largeImage(move.x, move.y)}
-                src={large}
-                onLoad={this.largeLoaded}
-              />
-            </div>
-          )}
+          <div>
+            {content.placeholder && (
+              <div style={style.spinner}>
+                <SpinnerIcon />
+              </div>
+            )}
+            <img
+              onDoubleClick={this.toggleZoom}
+              onContextMenu={content.handleOnContextMenu}
+              id="react-modal-image-img"
+              style={content.style}
+              src={content.src}
+              onLoad={content.handleOnLoad}
+            />
+          </div>
         </div>
         <div style={style.header}>
           <span style={style.iconMenu}>
-            <a href={large} style={style.icon} download>
+            <a href={large || medium} style={style.icon} download>
               <DownloadIcon />
             </a>
             <a href="" style={style.icon} onClick={this.toggleZoom}>
@@ -201,7 +201,7 @@ export default class extends Component {
               <CloseIcon />
             </a>
           </span>
-          <span style={style.caption}>{alt}</span>
+          {alt && <span style={style.caption}>{alt}</span>}
         </div>
       </div>
     );

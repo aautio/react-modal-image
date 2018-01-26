@@ -4,13 +4,9 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-A tiny an a simple React component providing modal image Lightbox.
+A _lightweight_ React component providing modal image Lightbox.
 
 [DEMO](https://aautio.github.io/react-modal-image/)
-
-## Usage
-
-You'll provide 3 images, a small, medium size and a large one. The component will display the small one by default and open a Lightbox for the medium & large ones if clicked.
 
 ## Features
 
@@ -18,9 +14,8 @@ You'll provide 3 images, a small, medium size and a large one. The component wil
 * Zero dependencies.
 * Includes builds for CommonJS and ES modules.
 * For React 15.x and 16.x.
-* Image alt text displayed as caption
-* Download button
-* Zoom and move the image
+* Image alt shown as title of lightbox
+* User can zoom & move the image or download the highest quality one
 
 You need to bring your own `Set` polyfill if you use old Internet Explorers.
 
@@ -31,21 +26,19 @@ import ModalImage from 'react-modal-image'
 
 <ModalImage
   small={urlToTinyImageFile}
-  smallSrcSet={srcSetDefToTinyImageFile}
-  medium={urlToLargeImageFile}
   large={urlToHugeImageFile}
   alt="Hello World!"
 />
 ```
 
-| Prop          | Type     | Description                                              |
-| ------------- | -------- | -------------------------------------------------------- |
-| `className`   | `String` | `class` for the small preview image,                     |
-| `alt`         | `String` | alt text for the small image and the header in Lightbox. |
-| `small`       | `URL`    | `src` for the small preview image.                       |
-| `smallSrcSet` | `String` | `srcSet` for the small preview image.                    |
-| `medium`      | `URL`    | Image shown in Lightbox.                                 |
-| `large`       | `URL`    | Image shown when zoomed in Lightbox. Downloadable.       |
+| Prop          | Type     | Description                                                                         |
+| ------------- | -------- | ----------------------------------------------------------------------------------- |
+| `className`   | `String` | Optional. `class` for the small preview image.                                      |
+| `alt`         | `String` | Optional. `alt` for the small image and the heading text in Lightbox.               |
+| `small`       | `URL`    | `src` for the small preview image.                                                  |
+| `smallSrcSet` | `String` | Optional. `srcSet` for the small preview image.                                     |
+| `medium`      | `URL`    | Optional if `large` is defined. Image shown when zoomed out in Lightbox.            |
+| `large`       | `URL`    | Optional if `medium` is defined. Image shown when zoomed in Lightbox. Downloadable. |
 
 ## Lightbox-only API
 
