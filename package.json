@@ -1,10 +1,13 @@
 {
   "name": "react-modal-image",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Lightweight Lightbox React Component",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": ["es", "lib"],
+  "files": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "build": "nwb build-react-component",
     "site": "gh-pages -d demo/dist",
@@ -29,5 +32,11 @@
   },
   "author": "Ari Autio <ari.autio@iki.fi>",
   "license": "MIT",
-  "keywords": ["react-component", "lightbox", "modal", "image", "react"]
+  "keywords": [
+    "react-component",
+    "lightbox",
+    "modal",
+    "image",
+    "react"
+  ]
 }
