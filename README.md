@@ -14,8 +14,9 @@ A _lightweight_ React component providing modal image Lightbox.
 * Zero dependencies.
 * Includes builds for CommonJS and ES modules.
 * For React 15.x and 16.x.
-* Image alt shown as title of lightbox
+* Esc, Enter & click outside the image close the lightbox
 * User can zoom & move the image or download the highest quality one
+* Image alt shown as title of lightbox
 
 You need to bring your own `Set` polyfill if you use old Internet Explorers.
 

@@ -2,29 +2,16 @@ import React, { Component } from "react";
 
 import * as style from "./styles";
 
-import {
-  ZoomInIcon,
-  ZoomOutIcon,
-  DownloadIcon,
-  CloseIcon,
-  SpinnerIcon
-} from "./icons";
+import Header from "./Header";
+import Image from "./Image";
 
-export default class extends Component {
+import { SpinnerIcon } from "./icons";
+
+export default class Lightbox extends Component {
   state = {
-    mediumImgLoading: true,
-    largeImgLoading: true,
     move: { x: 0, y: 0 },
     moveStart: undefined,
     zoomed: false
-  };
-
-  mediumLoaded = () => {
-    this.setState({ mediumImgLoading: false });
-  };
-
-  largeLoaded = () => {
-    this.setState({ largeImgLoading: false });
   };
 
   handleKeyDown = event => {
@@ -90,8 +77,9 @@ export default class extends Component {
   handleMouseMoveOrTouchMove = event => {
     event.preventDefault();
 
-    if (!this.state.zoomed) {
+    if (!this.state.zoomed || !this.state.moveStart) {
       // do not allow drag'n'drop if zoom has not been applied
+      // or if there has not been a click
       return;
     }
 
@@ -107,10 +95,6 @@ export default class extends Component {
     }
 
     this.setState(prevState => {
-      if (!prevState.moveStart) {
-        return;
-      }
-
       return {
         move: {
           x: coords.x - prevState.moveStart.x,
@@ -135,49 +119,9 @@ export default class extends Component {
     }));
   };
 
-  renderImage({ src, placeholder, styles, handleOnLoad, handleOnContextMenu }) {
-    return (
-      <div>
-        {placeholder && (
-          <div style={style.spinner}>
-            <SpinnerIcon />
-          </div>
-        )}
-        <img
-          onDoubleClick={this.toggleZoom}
-          onContextMenu={handleOnContextMenu}
-          id="react-modal-image-img"
-          style={styles}
-          src={src}
-          onLoad={handleOnLoad}
-        />
-      </div>
-    );
-  }
-
   render() {
     const { medium, large, alt, onClose } = this.props;
-    const { mediumImgLoading, largeImgLoading, move, zoomed } = this.state;
-
-    const largeImage = this.renderImage({
-      placeholder: large ? largeImgLoading : mediumImgLoading,
-      styles: style.largeImage(move.x, move.y),
-      handleOnLoad: this.largeLoaded,
-      src: large || medium
-    });
-
-    const mediumImage = this.renderImage({
-      placeholder: medium ? mediumImgLoading : largeImgLoading,
-      styles: style.mediumImage,
-      handleOnLoad: this.mediumLoaded,
-      src: medium || large,
-      handleOnContextMenu: event => {
-        // prevent context menu from being opened
-        // over a medium img to enforce download of only
-        // large images
-        large && medium && event.preventDefault();
-      }
-    });
+    const { move, zoomed } = this.state;
 
     return (
       <div style={style.modal}>
@@ -193,23 +137,32 @@ export default class extends Component {
           }}
           style={style.modalContent}
         >
-          {zoomed && largeImage}
-          {!zoomed && mediumImage}
+          {zoomed && (
+            <Image
+              id="react-modal-image-img"
+              src={large || medium}
+              styles={style.largeImage(move.x, move.y)}
+              handleDoubleClick={this.toggleZoom}
+            />
+          )}
+          {!zoomed && (
+            <Image
+              id="react-modal-image-img"
+              src={medium || large}
+              styles={style.mediumImage}
+              handleDoubleClick={this.toggleZoom}
+              contextMenu={!medium}
+            />
+          )}
         </div>
-        <div style={style.header}>
-          <span style={style.iconMenu}>
-            <a href={large || medium} style={style.icon} download>
-              <DownloadIcon />
-            </a>
-            <a href="" style={style.icon} onClick={this.toggleZoom}>
-              {zoomed ? <ZoomOutIcon /> : <ZoomInIcon />}
-            </a>
-            <a style={style.icon} onClick={onClose}>
-              <CloseIcon />
-            </a>
-          </span>
-          {alt && <span style={style.caption}>{alt}</span>}
-        </div>
+
+        <Header
+          image={large || medium}
+          alt={alt}
+          zoomed={zoomed}
+          toggleZoom={this.toggleZoom}
+          onClose={onClose}
+        />
       </div>
     );
   }
