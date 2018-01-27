@@ -10,7 +10,7 @@ const Header = ({ image, alt, zoomed, toggleZoom, onClose }) => (
       <a href={image} style={icon} download>
         <DownloadIcon />
       </a>
-      <a href="" style={icon} onClick={this.toggleZoom}>
+      <a href="" style={icon} onClick={toggleZoom}>
         {zoomed ? <ZoomOutIcon /> : <ZoomInIcon />}
       </a>
       <a style={icon} onClick={onClose}>
