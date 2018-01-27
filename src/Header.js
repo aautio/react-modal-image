@@ -7,13 +7,23 @@ import { ZoomInIcon, ZoomOutIcon, DownloadIcon, CloseIcon } from "./icons";
 const Header = ({ image, alt, zoomed, toggleZoom, onClose }) => (
   <div style={header}>
     <span style={iconMenu}>
-      <a href={image} style={icon} download>
+      <a
+        className="react-modal-image-download"
+        href={image}
+        style={icon}
+        download
+      >
         <DownloadIcon />
       </a>
-      <a href="" style={icon} onClick={toggleZoom}>
+      <a
+        className="react-modal-image-zoom"
+        href=""
+        style={icon}
+        onClick={toggleZoom}
+      >
         {zoomed ? <ZoomOutIcon /> : <ZoomInIcon />}
       </a>
-      <a style={icon} onClick={onClose}>
+      <a className="react-modal-image-close" style={icon} onClick={onClose}>
         <CloseIcon />
       </a>
     </span>

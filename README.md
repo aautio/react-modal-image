@@ -2,7 +2,6 @@
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
 
 A _lightweight_ React component providing modal image Lightbox.
 
@@ -78,5 +77,3 @@ const closeLightbox = () => {
 [build]: https://travis-ci.org/aautio/react-modal-image
 [npm-badge]: https://img.shields.io/npm/v/react-modal-image.png?style=flat-square
 [npm]: https://www.npmjs.org/package/react-modal-image
-[coveralls-badge]: https://img.shields.io/coveralls/aautio/react-modal-image/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/aautio/react-modal-image

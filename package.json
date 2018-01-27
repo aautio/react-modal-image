@@ -4,23 +4,20 @@
   "description": "Lightweight Lightbox React Component",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": [
-    "es",
-    "lib"
-  ],
+  "files": ["es", "lib"],
   "scripts": {
     "build": "nwb build-react-component",
     "site": "gh-pages -d demo/dist",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo",
-    "test": "nwb test-react",
-    "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "cypress:open": "cypress open",
+    "test": "cypress run"
   },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "cypress": "^1.4.1",
     "gh-pages": "^1.1.0",
     "nwb": "0.21.x",
     "react": "^16.2.0",
@@ -32,11 +29,5 @@
   },
   "author": "Ari Autio <ari.autio@iki.fi>",
   "license": "MIT",
-  "keywords": [
-    "react-component",
-    "lightbox",
-    "modal",
-    "image",
-    "react"
-  ]
+  "keywords": ["react-component", "lightbox", "modal", "image", "react"]
 }
