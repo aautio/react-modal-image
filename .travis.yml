@@ -6,7 +6,7 @@ node_js:
 
 install:
   - yarn install
-  - npm run build
+  - yarn build
 
 branches:
   only:
