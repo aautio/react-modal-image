@@ -1,10 +1,13 @@
 {
   "name": "react-modal-image",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Lightweight Lightbox React Component",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": ["es", "lib"],
+  "files": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "build": "nwb build-react-component",
     "site": "gh-pages -d demo/dist",
@@ -13,8 +16,7 @@
     "start:static": "http-server demo/dist/ -s -p 8888",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test":
-      "start-server-and-test start:static http://localhost:8888 cypress:run"
+    "test": "start-server-and-test start:static http://localhost:8888 cypress:run"
   },
   "peerDependencies": {
     "react": "16.x"
@@ -34,5 +36,11 @@
   },
   "author": "Ari Autio <ari.autio@iki.fi>",
   "license": "MIT",
-  "keywords": ["react-component", "lightbox", "modal", "image", "react"]
+  "keywords": [
+    "react-component",
+    "lightbox",
+    "modal",
+    "image",
+    "react"
+  ]
 }
