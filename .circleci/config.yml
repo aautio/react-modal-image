@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       # the Docker image with Cypress dependencies
-      - image: cypress/browsers:chrome62
+      - image: cypress/browsers:chrome67
         environment:
           ## this enables colors in the output
           TERM: xterm
