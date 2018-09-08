@@ -1,16 +1,17 @@
 describe("react-modal-image", function() {
-  it("can find three images in the demo", function() {
+  it("can find four images in the demo", function() {
     cy.visit("demo/dist/index.html");
 
     cy.contains("react-modal-image");
     cy.contains("#1 with alt, small, medium and large props");
     cy.contains("#2 with small and large props defined only");
     cy.contains("#3 with small and medium props defined only");
+    cy.contains("#4 with download and zoom -buttons hidden");
 
-    cy.get("img").should("have.length", 3);
+    cy.get("img").should("have.length", 4);
   });
 
-  it("can open and close all the three lightboxes", function() {
+  it("can open and close the three first lightboxes", function() {
     cy.visit("demo/dist/index.html");
 
     cy.get("#react-modal-image-img").should("not.exist");
@@ -24,7 +25,7 @@ describe("react-modal-image", function() {
     }
   });
 
-  it("can zoom in and out with all the three lightboxes", function() {
+  it("can zoom in and out with the three first lightboxes", function() {
     cy.visit("demo/dist/index.html");
 
     for (let idx of [0, 1, 2]) {
@@ -64,7 +65,7 @@ describe("react-modal-image", function() {
     }
   });
 
-  it("can download img from all the three lightboxes", function() {
+  it("can download img from the first three lightboxes", function() {
     cy.visit("demo/dist/index.html");
 
     cy.get("#react-modal-image-img").should("not.exist");
@@ -82,5 +83,20 @@ describe("react-modal-image", function() {
         .should("have.attr", "href", hrefUrl);
       cy.get(".react-modal-image-close").click();
     }
+  });
+
+
+  it("zoom and download buttons are hidden in the fourth lightbox", function() {
+    cy.visit("demo/dist/index.html");
+
+    const idx = 3
+
+    cy.get(`img:nth(${idx})`).click();
+
+    cy.get(".react-modal-image-download").should("not.exist");
+
+    cy.get(".react-modal-image-zoom").should("not.exist");
+
+    cy.get(".react-modal-image-close").click();
   });
 });
