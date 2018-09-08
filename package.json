@@ -12,7 +12,7 @@
     "build": "nwb build-react-component",
     "site": "gh-pages -d demo/dist",
     "clean": "nwb clean-module && nwb clean-demo",
-    "start": "nwb serve-react-demo -p 8888",
+    "start": "nwb serve-react-demo --port 8888",
     "start:static": "http-server demo/dist/ -s -p 8888",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
@@ -22,13 +22,13 @@
     "react": "16.x"
   },
   "devDependencies": {
-    "cypress": "^1.4.1",
-    "gh-pages": "^1.1.0",
+    "cypress": "^3.1.0",
+    "gh-pages": "^1.2.0",
     "http-server": "^0.11.1",
-    "nwb": "0.21.x",
+    "nwb": "^0.23.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "start-server-and-test": "^1.0.0"
+    "start-server-and-test": "^1.7.1"
   },
   "repository": {
     "type": "git",

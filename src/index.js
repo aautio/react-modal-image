@@ -15,7 +15,7 @@ export default class extends Component {
   };
 
   render() {
-    const { className, small, smallSrcSet, medium, large, alt } = this.props;
+    const { className, small, smallSrcSet, medium, large, alt, hideDownload, hideZoom } = this.props;
     const { modalOpen } = this.state;
 
     return (
@@ -34,6 +34,8 @@ export default class extends Component {
             large={large}
             alt={alt}
             onClose={this.toggleModal}
+            hideDownload={hideDownload}
+            hideZoom={hideZoom}
           />
         )}
       </div>

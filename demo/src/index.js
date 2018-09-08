@@ -41,6 +41,18 @@ class Demo extends Component {
         </div>
         <p>^ click or inspect the image above</p>
 
+        <h2>#4 with download and zoom -buttons hidden</h2>
+
+        <div style={{ maxWidth: "400px" }}>
+          <ModalImage
+            small="example_img_small.jpg"
+            large="example_img_large.jpg"
+            hideDownload={true}
+            hideZoom={true}
+          />
+        </div>
+        <p>^ click or inspect the image above</p>
+
         <h2>Further info</h2>
 
         <p>

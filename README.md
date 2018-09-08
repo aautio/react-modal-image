@@ -15,6 +15,7 @@ A _lightweight_ React component providing modal image Lightbox.
 * For React 15.x and 16.x.
 * Esc, Enter & click outside the image close the lightbox
 * User can zoom & move the image or download the highest quality one
+* Download and Zoom -buttons can be hidden.
 * Image alt shown as title of lightbox
 
 You need to bring your own `Set` polyfill if you use old Internet Explorers.
@@ -31,14 +32,17 @@ import ModalImage from 'react-modal-image'
 />
 ```
 
-| Prop          | Type     | Description                                                                         |
-| ------------- | -------- | ----------------------------------------------------------------------------------- |
-| `className`   | `String` | Optional. `class` for the small preview image.                                      |
-| `alt`         | `String` | Optional. `alt` for the small image and the heading text in Lightbox.               |
-| `small`       | `URL`    | `src` for the small preview image.                                                  |
-| `smallSrcSet` | `String` | Optional. `srcSet` for the small preview image.                                     |
-| `medium`      | `URL`    | Optional if `large` is defined. Image shown when zoomed out in Lightbox.            |
-| `large`       | `URL`    | Optional if `medium` is defined. Image shown when zoomed in Lightbox. Downloadable. |
+| Prop           | Type      | Description                                                                         |
+| -------------- | --------- | ----------------------------------------------------------------------------------- |
+| `className`    | `String`  | Optional. `class` for the small preview image.                                      |
+| `alt`          | `String`  | Optional. `alt` for the small image and the heading text in Lightbox.               |
+| `small`        | `URL`     | `src` for the small preview image.                                                  |
+| `smallSrcSet`  | `String`  | Optional. `srcSet` for the small preview image.                                     |
+| `medium`       | `URL`     | Optional if `large` is defined. Image shown when zoomed out in Lightbox.            |
+| `large`        | `URL`     | Optional if `medium` is defined. Image shown when zoomed in Lightbox. Downloadable. |
+| `hideDownload` | `boolean` | Optional. Set to `true` to hide download-button from the Lightbox.                  |
+| `hideZoom`     | `boolean` | Optional. Set to `true` to hide zoom-button from the Lightbox.                      |
+
 
 ## Lightbox-only API
 

@@ -120,7 +120,7 @@ export default class Lightbox extends Component {
   };
 
   render() {
-    const { medium, large, alt, onClose } = this.props;
+    const { medium, large, alt, onClose, hideDownload, hideZoom } = this.props;
     const { move, zoomed } = this.state;
 
     return (
@@ -162,6 +162,8 @@ export default class Lightbox extends Component {
           zoomed={zoomed}
           toggleZoom={this.toggleZoom}
           onClose={onClose}
+          enableDownload={!hideDownload}
+          enableZoom={!hideZoom}
         />
       </div>
     );
