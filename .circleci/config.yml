@@ -14,11 +14,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-npm-deps-{{ checksum "package.json" }}
-            - v1-npm-deps
+            - v2-npm-deps-{{ checksum "package.json" }}
       - run: yarn install
       - save_cache:
-          key: v1-npm-deps-{{ checksum "package.json" }}
+          key: v2-npm-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
             - ~/.cache
