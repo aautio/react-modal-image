@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 
-import * as style from "./styles";
+import StyleInjector, { lightboxStyles } from "./styles";
 
 import Header from "./Header";
 import Image from "./Image";
-
-import { SpinnerIcon } from "./icons";
 
 export default class Lightbox extends Component {
   state = {
@@ -64,11 +62,11 @@ export default class Lightbox extends Component {
       return;
     }
 
-    this.setState(prevState => {
+    this.setState(prev => {
       return {
         moveStart: {
-          x: coords.x - prevState.move.x,
-          y: coords.y - prevState.move.y
+          x: coords.x - prev.move.x,
+          y: coords.y - prev.move.y
         }
       };
     });
@@ -94,11 +92,11 @@ export default class Lightbox extends Component {
       return;
     }
 
-    this.setState(prevState => {
+    this.setState(prev => {
       return {
         move: {
-          x: coords.x - prevState.moveStart.x,
-          y: coords.y - prevState.moveStart.y
+          x: coords.x - prev.moveStart.x,
+          y: coords.y - prev.moveStart.y
         }
       };
     });
@@ -112,10 +110,10 @@ export default class Lightbox extends Component {
 
   toggleZoom = event => {
     event.preventDefault();
-    this.setState(prevState => ({
-      zoomed: !prevState.zoomed,
+    this.setState(prev => ({
+      zoomed: !prev.zoomed,
       // reset position if zoomed out
-      move: prevState.zoomed ? { x: 0, y: 0 } : prevState.move
+      move: prev.zoomed ? { x: 0, y: 0 } : prev.move
     }));
   };
 
@@ -124,48 +122,66 @@ export default class Lightbox extends Component {
     const { move, zoomed } = this.state;
 
     return (
-      <div style={style.modal}>
-        <div
-          onMouseDown={this.handleMouseDownOrTouchStart}
-          onMouseUp={this.handleMouseUpOrTouchEnd}
-          onMouseMove={this.handleMouseMoveOrTouchMove}
-          onTouchStart={this.handleMouseDownOrTouchStart}
-          onTouchEnd={this.handleMouseUpOrTouchEnd}
-          onTouchMove={this.handleMouseMoveOrTouchMove}
-          ref={el => {
-            this.contentEl = el;
-          }}
-          style={style.modalContent}
-        >
-          {zoomed && (
-            <Image
-              id="react-modal-image-img"
-              src={large || medium}
-              styles={style.largeImage(move.x, move.y)}
-              handleDoubleClick={this.toggleZoom}
-            />
-          )}
-          {!zoomed && (
-            <Image
-              id="react-modal-image-img"
-              src={medium || large}
-              styles={style.mediumImage}
-              handleDoubleClick={this.toggleZoom}
-              contextMenu={!medium}
-            />
-          )}
-        </div>
-
-        <Header
-          image={large || medium}
-          alt={alt}
-          zoomed={zoomed}
-          toggleZoom={this.toggleZoom}
-          onClose={onClose}
-          enableDownload={!hideDownload}
-          enableZoom={!hideZoom}
+      <React.Fragment>
+        <StyleInjector
+          name="__react_modal_image__lightbox"
+          css={lightboxStyles}
         />
-      </div>
+
+        <div className="__react_modal_image__modal_container">
+          <div
+            className="__react_modal_image__modal_content"
+            onMouseDown={this.handleMouseDownOrTouchStart}
+            onMouseUp={this.handleMouseUpOrTouchEnd}
+            onMouseMove={this.handleMouseMoveOrTouchMove}
+            onTouchStart={this.handleMouseDownOrTouchStart}
+            onTouchEnd={this.handleMouseUpOrTouchEnd}
+            onTouchMove={this.handleMouseMoveOrTouchMove}
+            ref={el => {
+              this.contentEl = el;
+            }}
+          >
+            {zoomed && (
+              <Image
+                id="react-modal-image-img"
+                className="__react_modal_image__large_img"
+                src={large || medium}
+                style={{
+                  transform: `translate3d(-50%, -50%, 0) translate3d(${
+                    move.x
+                  }px, ${move.y}px, 0)`,
+                  WebkitTransform: `translate3d(-50%, -50%, 0) translate3d(${
+                    move.x
+                  }px, ${move.y}px, 0)`,
+                  MsTransform: `translate3d(-50%, -50%, 0) translate3d(${
+                    move.x
+                  }px, ${move.y}px, 0)`
+                }}
+                handleDoubleClick={this.toggleZoom}
+              />
+            )}
+            {!zoomed && (
+              <Image
+                id="react-modal-image-img"
+                className="__react_modal_image__medium_img"
+                src={medium || large}
+                handleDoubleClick={this.toggleZoom}
+                contextMenu={!medium}
+              />
+            )}
+          </div>
+
+          <Header
+            image={large || medium}
+            alt={alt}
+            zoomed={zoomed}
+            toggleZoom={this.toggleZoom}
+            onClose={onClose}
+            enableDownload={!hideDownload}
+            enableZoom={!hideZoom}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }

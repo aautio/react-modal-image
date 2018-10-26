@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import { smallImage } from "./styles";
 import Lightbox from "./Lightbox";
 
 export { default as Lightbox } from "./Lightbox";
@@ -9,20 +8,33 @@ export default class extends Component {
   state = { modalOpen: false };
 
   toggleModal = () => {
-    this.setState(prevState => ({
-      modalOpen: !prevState.modalOpen
+    this.setState(prev => ({
+      modalOpen: !prev.modalOpen
     }));
   };
 
   render() {
-    const { className, small, smallSrcSet, medium, large, alt, hideDownload, hideZoom } = this.props;
+    const {
+      className,
+      small,
+      smallSrcSet,
+      medium,
+      large,
+      alt,
+      hideDownload,
+      hideZoom
+    } = this.props;
     const { modalOpen } = this.state;
 
     return (
-      <div>
+      <React.Fragment>
         <img
           className={className}
-          style={smallImage}
+          style={{
+            cursor: "pointer",
+            maxWidth: "100%",
+            maxHeight: "100%"
+          }}
           onClick={this.toggleModal}
           src={small}
           srcSet={smallSrcSet}
@@ -38,7 +50,7 @@ export default class extends Component {
             hideZoom={hideZoom}
           />
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }

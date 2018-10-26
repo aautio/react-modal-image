@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import { SpinnerIcon } from "./icons";
 
-import { spinner } from "./styles";
-
 export default class Image extends Component {
   state = {
     loading: true
@@ -18,24 +16,20 @@ export default class Image extends Component {
   };
 
   render() {
-    const { id, src, handleDoubleClick, styles } = this.props;
+    const { id, className, src, handleDoubleClick } = this.props;
 
     return (
-      <div>
-        {this.state.loading && (
-          <div style={spinner}>
-            <SpinnerIcon />
-          </div>
-        )}
+      <React.Fragment>
+        {this.state.loading && <SpinnerIcon />}
         <img
           id={id}
+          className={className}
           src={src}
           onLoad={this.handleOnLoad}
           onDoubleClick={handleDoubleClick}
           onContextMenu={this.handleOnContextMenu}
-          style={styles}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

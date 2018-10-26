@@ -20,7 +20,7 @@ describe("react-modal-image", function() {
       cy.get(`img:nth(${idx})`).click();
       cy.get("#react-modal-image-img");
 
-      cy.get(".react-modal-image-close").click();
+      cy.get("span.__react_modal_image__icon_menu").children().last().click();
       cy.get("#react-modal-image-img").should("not.exist");
     }
   });
@@ -31,37 +31,37 @@ describe("react-modal-image", function() {
     for (let idx of [0, 1, 2]) {
       cy.get(`img:nth(${idx})`).click();
 
-      cy.get(".react-modal-image-zoom").then($zoom1 => {
+      cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom1 => {
         const initialHtml = $zoom1.html();
 
         // doubleclicks
         cy.get("#react-modal-image-img").dblclick();
 
-        cy.get(".react-modal-image-zoom").then($zoom2 => {
+        cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom2 => {
           expect($zoom2.html()).to.not.equal(initialHtml);
         });
 
         cy.get("#react-modal-image-img").dblclick();
 
-        cy.get(".react-modal-image-zoom").then($zoom2 => {
+        cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom2 => {
           expect($zoom2.html()).to.equal(initialHtml);
         });
 
         // clicks to zoom icon
-        cy.get(".react-modal-image-zoom").click();
+        cy.get("span.__react_modal_image__icon_menu").children().first().next().click();
 
-        cy.get(".react-modal-image-zoom").then($zoom2 => {
+        cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom2 => {
           expect($zoom2.html()).to.not.equal(initialHtml);
         });
 
-        cy.get(".react-modal-image-zoom").click();
+        cy.get("span.__react_modal_image__icon_menu").children().first().next().click();
 
-        cy.get(".react-modal-image-zoom").then($zoom2 => {
+        cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom2 => {
           expect($zoom2.html()).to.equal(initialHtml);
         });
       });
 
-      cy.get(".react-modal-image-close").click();
+      cy.get("span.__react_modal_image__icon_menu").children().last().click();
     }
   });
 
@@ -73,15 +73,15 @@ describe("react-modal-image", function() {
     for (let idx of [0, 1, 2]) {
       cy.get(`img:nth(${idx})`).click();
       cy.get("#react-modal-image-img");
-      cy.get(".react-modal-image-download").should("have.attr", "download");
+      cy.get("span.__react_modal_image__icon_menu").children().first().should("have.attr", "download");
 
       const hrefUrl =
         idx < 2 ? "example_img_large.jpg" : "example_img_medium.jpg";
 
       cy
-        .get(".react-modal-image-download")
+        .get("span.__react_modal_image__icon_menu").children().first()
         .should("have.attr", "href", hrefUrl);
-      cy.get(".react-modal-image-close").click();
+      cy.get("span.__react_modal_image__icon_menu").children().last().click();
     }
   });
 
@@ -93,10 +93,10 @@ describe("react-modal-image", function() {
 
     cy.get(`img:nth(${idx})`).click();
 
-    cy.get(".react-modal-image-download").should("not.exist");
+    cy.get("span.__react_modal_image__icon_menu").children().should("have.length", "1");
 
     cy.get(".react-modal-image-zoom").should("not.exist");
 
-    cy.get(".react-modal-image-close").click();
+    cy.get("span.__react_modal_image__icon_menu").children().last().click();
   });
 });

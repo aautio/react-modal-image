@@ -4,7 +4,7 @@
 
 ## Demo Development Server
 
-* `yarn start` will run a development server with the component's demo app at [http://localhost:3000](http://localhost:3000) with hot module reloading.
+* `yarn start` will run a development server with the component's demo app at [http://localhost:8888](http://localhost:8888) with hot module reloading.
 
 ## Running Tests
 
@@ -12,6 +12,6 @@
 
 ## Building
 
-* `yarn build` will build the component for publishing to yarn and also bundle the demo app.
+* `yarn build` will build the component for publishing to npmjs and also bundle the demo app.
 
 * `yarn clean` will delete built resources.

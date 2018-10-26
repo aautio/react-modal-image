@@ -1,7 +1,5 @@
 import React from "react";
 
-import { header, iconMenu, icon, caption } from "./styles";
-
 import { ZoomInIcon, ZoomOutIcon, DownloadIcon, CloseIcon } from "./icons";
 
 const Header = ({
@@ -13,33 +11,23 @@ const Header = ({
   enableDownload,
   enableZoom
 }) => (
-  <div style={header}>
-    <span style={iconMenu}>
+  <div className="__react_modal_image__header">
+    <span className="__react_modal_image__icon_menu">
       {enableDownload && (
-        <a
-          className="react-modal-image-download"
-          href={image}
-          style={icon}
-          download
-        >
+        <a href={image} download>
           <DownloadIcon />
         </a>
       )}
       {enableZoom && (
-        <a
-          className="react-modal-image-zoom"
-          href=""
-          style={icon}
-          onClick={toggleZoom}
-        >
+        <a onClick={toggleZoom}>
           {zoomed ? <ZoomOutIcon /> : <ZoomInIcon />}
         </a>
       )}
-      <a className="react-modal-image-close" style={icon} onClick={onClose}>
+      <a onClick={onClose}>
         <CloseIcon />
       </a>
     </span>
-    {alt && <span style={caption}>{alt}</span>}
+    {alt && <span className="__react_modal_image__caption">{alt}</span>}
   </div>
 );
 
