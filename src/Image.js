@@ -16,7 +16,7 @@ export default class Image extends Component {
   };
 
   render() {
-    const { id, className, src, handleDoubleClick } = this.props;
+    const { id, className, src, style, handleDoubleClick } = this.props;
 
     return (
       <React.Fragment>
@@ -25,6 +25,7 @@ export default class Image extends Component {
           id={id}
           className={className}
           src={src}
+          style={style}
           onLoad={this.handleOnLoad}
           onDoubleClick={handleDoubleClick}
           onContextMenu={this.handleOnContextMenu}
