@@ -44,7 +44,7 @@ import ModalImage from 'react-modal-image'
 | `hideZoom`     | `boolean` | Optional. Set to `true` to hide zoom-button from the Lightbox.                      |
 
 
-## Lightbox-only API
+## Lightbox-only API for advanced usage
 
 You can also choose to import only the Lightbox.
 
