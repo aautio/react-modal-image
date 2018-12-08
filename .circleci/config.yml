@@ -2,6 +2,9 @@ version: 2
 
 jobs:
   build:
+    branches:
+      ignore:
+        - gh-pages
     docker:
       # the Docker image with Cypress dependencies
       - image: cypress/browsers:chrome67
