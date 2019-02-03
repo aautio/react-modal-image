@@ -19,7 +19,7 @@ export default class Image extends Component {
     const { id, className, src, style, handleDoubleClick } = this.props;
 
     return (
-      <React.Fragment>
+      <div>
         {this.state.loading && <SpinnerIcon />}
         <img
           id={id}
@@ -30,7 +30,7 @@ export default class Image extends Component {
           onDoubleClick={handleDoubleClick}
           onContextMenu={this.handleOnContextMenu}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }

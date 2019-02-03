@@ -122,7 +122,7 @@ export default class Lightbox extends Component {
     const { move, zoomed } = this.state;
 
     return (
-      <React.Fragment>
+      <div>
         <StyleInjector
           name="__react_modal_image__lightbox"
           css={lightboxStyles}
@@ -181,7 +181,7 @@ export default class Lightbox extends Component {
             enableZoom={!hideZoom}
           />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

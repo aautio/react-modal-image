@@ -27,7 +27,7 @@ export default class extends Component {
     const { modalOpen } = this.state;
 
     return (
-      <React.Fragment>
+      <div>
         <img
           className={className}
           style={{
@@ -50,7 +50,7 @@ export default class extends Component {
             hideZoom={hideZoom}
           />
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }
