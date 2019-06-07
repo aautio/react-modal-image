@@ -9,20 +9,35 @@
     "lib"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
+    "build": "nwb build-react-component && mkdir -p build && cp -r lib build/ && cp -r es build/ && cp package.json build/ && cp README.md build/",
     "site": "gh-pages -d demo/dist",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo --port 8888",
     "start:static": "http-server demo/dist/ -s -p 8888",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test": "start-server-and-test start:static http://localhost:8888 cypress:run"
+    "test": "start-server-and-test start:static http://localhost:8888 cypress:run",
+    "deploy": "rm -rf build/ && deploy-to-git"
+  },
+  "config": {
+    "deployToGit": {
+      "repository": "git@github.com:ac3d912/react-modal-image.git",
+      "branch": "npm",
+      "folder": "build",
+      "script": "npm run build",
+      "commit": "Latest version built and deployed.",
+      "user": {
+        "email": "ac3d912@gmail.com",
+        "name": "ac3d912"
+      }
+    }
   },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
     "cypress": "^3.1.0",
+    "deploy-to-git": "^0.1.5",
     "gh-pages": "^1.2.0",
     "http-server": "^0.11.1",
     "nwb": "^0.23.0",
