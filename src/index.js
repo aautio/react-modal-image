@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 import Lightbox from "./Lightbox";
 
@@ -22,9 +23,14 @@ export default class extends Component {
       large,
       alt,
       hideDownload,
-      hideZoom
+      hideZoom,
+      renderRoot
     } = this.props;
     const { modalOpen } = this.state;
+    var wrapit = function(element) {
+        return (renderRoot ? ReactDOM.createPortal(element, document.getElementById("root")) :
+            element);
+    };
 
     return (
       <div>
@@ -40,7 +46,7 @@ export default class extends Component {
           srcSet={smallSrcSet}
           alt={alt}
         />
-        {modalOpen && (
+        {modalOpen && wrapit(
           <Lightbox
             medium={medium}
             large={large}
