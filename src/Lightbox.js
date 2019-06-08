@@ -180,11 +180,13 @@ export default class Lightbox extends Component {
             {!zoomed && (
               <Image
                 id="react-modal-image-img"
-                className={"__react_modal_image__medium_img"}
+                className="__react_modal_image__medium_img"
                 src={medium || large}
                 handleDoubleClick={this.toggleZoom}
                 contextMenu={!medium}
-                style={{transform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg + "deg"})`}}
+                style={{transform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg + "deg"})`,
+                        WebkitTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg + "deg"})`,
+                        MsTransform: `translate3d(-50%, -50%, 0) rotate(${rotationDeg + "deg"})`}}
               />
             )}
           </div>
