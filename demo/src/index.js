@@ -49,6 +49,7 @@ class Demo extends Component {
             large="example_img_large.jpg"
             hideDownload={true}
             hideZoom={true}
+            hideRotate={true}
           />
         </div>
         <p>^ click or inspect the image above</p>

@@ -1,15 +1,17 @@
 import React from "react";
 
-import { ZoomInIcon, ZoomOutIcon, DownloadIcon, CloseIcon } from "./icons";
+import { ZoomInIcon, ZoomOutIcon, DownloadIcon, CloseIcon, RotateIcon } from "./icons";
 
 const Header = ({
   image,
   alt,
   zoomed,
   toggleZoom,
+  toggleRotate,
   onClose,
   enableDownload,
-  enableZoom
+  enableZoom,
+  enableRotate
 }) => (
   <div className="__react_modal_image__header">
     <span className="__react_modal_image__icon_menu">
@@ -21,6 +23,11 @@ const Header = ({
       {enableZoom && (
         <a onClick={toggleZoom}>
           {zoomed ? <ZoomOutIcon /> : <ZoomInIcon />}
+        </a>
+      )}
+      {enableRotate && (
+        <a onClick={toggleRotate}>
+          <RotateIcon/>
         </a>
       )}
       <a onClick={onClose}>

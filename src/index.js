@@ -22,7 +22,8 @@ export default class extends Component {
       large,
       alt,
       hideDownload,
-      hideZoom
+      hideZoom,
+      hideRotate
     } = this.props;
     const { modalOpen } = this.state;
 
@@ -48,6 +49,7 @@ export default class extends Component {
             onClose={this.toggleModal}
             hideDownload={hideDownload}
             hideZoom={hideZoom}
+            hideRotate={hideRotate}
           />
         )}
       </div>
