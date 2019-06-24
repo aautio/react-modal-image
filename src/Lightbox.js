@@ -118,14 +118,22 @@ export default class Lightbox extends Component {
   };
 
   render() {
-    const { medium, large, alt, onClose, hideDownload, hideZoom } = this.props;
+    const {
+      medium,
+      large,
+      alt,
+      onClose,
+      hideDownload,
+      hideZoom,
+      imageBackgroundColor = "black"
+    } = this.props;
     const { move, zoomed } = this.state;
 
     return (
       <div>
         <StyleInjector
           name="__react_modal_image__lightbox"
-          css={lightboxStyles}
+          css={lightboxStyles({ imageBackgroundColor })}
         />
 
         <div className="__react_modal_image__modal_container">

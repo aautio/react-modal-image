@@ -1,5 +1,5 @@
 describe("react-modal-image", function() {
-  it("can find four images in the demo", function() {
+  it("can find five images in the demo", function() {
     cy.visit("demo/dist/index.html");
 
     cy.contains("react-modal-image");
@@ -7,8 +7,9 @@ describe("react-modal-image", function() {
     cy.contains("#2 with small and large props defined only");
     cy.contains("#3 with small and medium props defined only");
     cy.contains("#4 with download and zoom -buttons hidden");
+    cy.contains("#5 with transparent png shown in hotpink background");
 
-    cy.get("img").should("have.length", 4);
+    cy.get("img").should("have.length", 5);
   });
 
   it("can open and close the three first lightboxes", function() {
@@ -96,6 +97,18 @@ describe("react-modal-image", function() {
     cy.get("span.__react_modal_image__icon_menu").children().should("have.length", "1");
 
     cy.get(".react-modal-image-zoom").should("not.exist");
+
+    cy.get("span.__react_modal_image__icon_menu").children().last().click();
+  });
+
+  it("fifth image has hotpink background", function() {
+    cy.visit("demo/dist/index.html");
+
+    const idx = 4
+
+    cy.get(`img:nth(${idx})`).click();
+
+    cy.get(".__react_modal_image__medium_img").should("have.css", "background-color", "rgb(255, 105, 180)");
 
     cy.get("span.__react_modal_image__icon_menu").children().last().click();
   });

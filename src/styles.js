@@ -26,7 +26,7 @@ export default class StyleInjector extends Component {
   }
 }
 
-export const lightboxStyles = `
+export const lightboxStyles = ({ imageBackgroundColor }) => `
   body {
     overflow: hidden;
   }
@@ -62,11 +62,13 @@ export const lightboxStyles = `
 
   .__react_modal_image__medium_img {
     max-width: 98%;
-    max-height: 98%;    
+    max-height: 98%;
+    background-color: ${imageBackgroundColor};
   }
 
   .__react_modal_image__large_img {
     cursor: move;
+    background-color: ${imageBackgroundColor}
   }
 
   .__react_modal_image__icon_menu a {
