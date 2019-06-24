@@ -7,8 +7,9 @@ describe("react-modal-image", function() {
     cy.contains("#2 with small and large props defined only");
     cy.contains("#3 with small and medium props defined only");
     cy.contains("#4 with download and zoom -buttons hidden");
+    cy.contains("#6 with rotation -button displayed");
 
-    cy.get("img").should("have.length", 4);
+    cy.get("img").should("have.length", 5);
   });
 
   it("can open and close the three first lightboxes", function() {

@@ -49,7 +49,17 @@ class Demo extends Component {
             large="example_img_large.jpg"
             hideDownload={true}
             hideZoom={true}
-            hideRotate={true}
+          />
+        </div>
+        <p>^ click or inspect the image above</p>
+
+        <h2>#6 with rotation -button displayed</h2>
+
+        <div style={{ maxWidth: "400px" }}>
+          <ModalImage
+            small="example_img_small.jpg"
+            large="example_img_large.jpg"
+            showRotate={true}
           />
         </div>
         <p>^ click or inspect the image above</p>

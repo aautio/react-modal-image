@@ -42,7 +42,7 @@ import ModalImage from 'react-modal-image'
 | `large`        | `URL`     | Optional if `medium` is defined. Image shown when zoomed in Lightbox. Downloadable. |
 | `hideDownload` | `boolean` | Optional. Set to `true` to hide download-button from the Lightbox.                  |
 | `hideZoom`     | `boolean` | Optional. Set to `true` to hide zoom-button from the Lightbox.                      |
-| `hideRotate`   | `boolean` | Optional. Set to `true` to hide rotate-button from the Lightbox.                      |
+| `showRotate`   | `boolean` | Optional. Set to `true` to show rotate-button within the Lightbox.                  |
 
 
 ## Lightbox-only API for advanced usage
