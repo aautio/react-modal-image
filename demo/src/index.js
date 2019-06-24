@@ -53,6 +53,19 @@ class Demo extends Component {
         </div>
         <p>^ click or inspect the image above</p>
 
+        <h2>#5 with transparent png shown in hotpink background</h2>
+
+        <div style={{ maxWidth: "400px" }}>
+          <ModalImage
+            small="example_transparent_heart.png"
+            large="example_transparent_heart.png"
+            hideDownload={true}
+            hideZoom={true}
+            imageBackgroundColor="hotpink"
+          />
+        </div>
+        <p>^ click or inspect the image above</p>
+
         <h2>#6 with rotation -button displayed</h2>
 
         <div style={{ maxWidth: "400px" }}>

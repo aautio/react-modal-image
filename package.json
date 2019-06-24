@@ -15,14 +15,14 @@
     "start": "nwb serve-react-demo --port 8888",
     "start:static": "http-server demo/dist/ -s -p 8888",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
+    "cypress:run": "cypress run --browser chrome",
     "test": "start-server-and-test start:static http://localhost:8888 cypress:run"
   },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
-    "cypress": "^3.1.0",
+    "cypress": "^3.3.1",
     "gh-pages": "^1.2.0",
     "http-server": "^0.11.1",
     "nwb": "^0.23.0",

@@ -141,7 +141,8 @@ export default class Lightbox extends Component {
       onClose,
       hideDownload,
       hideZoom,
-      showRotate
+      showRotate,
+      imageBackgroundColor = "black"
     } = this.props;
     const { move, zoomed, rotationDeg } = this.state;
 
@@ -149,7 +150,7 @@ export default class Lightbox extends Component {
       <div>
         <StyleInjector
           name="__react_modal_image__lightbox"
-          css={lightboxStyles}
+          css={lightboxStyles({ imageBackgroundColor })}
         />
 
         <div className="__react_modal_image__modal_container">
