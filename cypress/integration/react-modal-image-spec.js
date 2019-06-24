@@ -1,5 +1,5 @@
 describe("react-modal-image", function() {
-  it("can find five images in the demo", function() {
+  it("can find six images in the demo", function() {
     cy.visit("demo/dist/index.html");
 
     cy.contains("react-modal-image");
@@ -8,8 +8,9 @@ describe("react-modal-image", function() {
     cy.contains("#3 with small and medium props defined only");
     cy.contains("#4 with download and zoom -buttons hidden");
     cy.contains("#5 with transparent png shown in hotpink background");
+    cy.contains("#6 with rotation -button displayed");
 
-    cy.get("img").should("have.length", 5);
+    cy.get("img").should("have.length", 6);
   });
 
   it("can open and close the three first lightboxes", function() {
