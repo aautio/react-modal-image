@@ -37,13 +37,17 @@ describe("react-modal-image", function() {
         const initialHtml = $zoom1.html();
 
         // doubleclicks
-        cy.get("#react-modal-image-img").dblclick();
+        cy.get("#react-modal-image-img").click();
+        cy.wait(200)
+        cy.get("#react-modal-image-img").click();
 
         cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom2 => {
           expect($zoom2.html()).to.not.equal(initialHtml);
         });
 
-        cy.get("#react-modal-image-img").dblclick();
+        cy.get("#react-modal-image-img").click();
+        cy.wait(200)
+        cy.get("#react-modal-image-img").click();
 
         cy.get("span.__react_modal_image__icon_menu").children().first().next().then($zoom2 => {
           expect($zoom2.html()).to.equal(initialHtml);
