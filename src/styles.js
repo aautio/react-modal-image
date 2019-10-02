@@ -33,7 +33,7 @@ export const lightboxStyles = ({ imageBackgroundColor }) => `
 
   .__react_modal_image__modal_container {
     position: fixed;
-    z-index: 1000;
+    z-index: 5000;
     left: 0;
     top: 0;
     width: 100%;
