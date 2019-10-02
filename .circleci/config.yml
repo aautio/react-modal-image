@@ -7,7 +7,7 @@ jobs:
         - gh-pages
     docker:
       # the Docker image with Cypress dependencies
-      - image: cypress/browsers:chrome67
+      - image: cypress/browsers:chrome69
         environment:
           ## this enables colors in the output
           TERM: xterm
