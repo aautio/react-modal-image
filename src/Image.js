@@ -4,7 +4,8 @@ import { SpinnerIcon } from "./icons";
 
 export default class Image extends Component {
   state = {
-    loading: true
+    loading: true,
+    lastClickTs: 0
   };
 
   handleOnLoad = () => {
@@ -15,8 +16,23 @@ export default class Image extends Component {
     !this.props.contextMenu && event.preventDefault();
   };
 
+  // Fixes dblClick on mobile devices
+  handleClick = event => {
+    const { handleDoubleClick } = this.props;
+    const { lastClickTs } = this.state
+    const now = Date.now()
+    const delta = now - lastClickTs;
+
+    if (delta > 20 && delta < 500) {
+      this.setState({ lastClickTs: 0 });
+      handleDoubleClick(event);
+    } else {
+      this.setState({ lastClickTs: now });
+    }
+  };
+
   render() {
-    const { id, className, src, style, handleDoubleClick } = this.props;
+    const { id, className, src, style } = this.props;
 
     return (
       <div>
@@ -27,7 +43,7 @@ export default class Image extends Component {
           src={src}
           style={style}
           onLoad={this.handleOnLoad}
-          onDoubleClick={handleDoubleClick}
+          onClick={this.handleClick}
           onContextMenu={this.handleOnContextMenu}
         />
       </div>
