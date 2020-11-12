@@ -45,6 +45,7 @@ import ModalImage from "react-modal-image";
 | `hideZoom`             | `boolean` | Optional. Set to `true` to hide zoom-button from the Lightbox.                                                |
 | `showRotate`           | `boolean` | Optional. Set to `true` to show rotate-button within the Lightbox.                                            |
 | `imageBackgroundColor` | `String`  | Optional. Background color of the image shown in Lightbox. Defaults to black. Handy for transparent images.   |
+| `loading`              | `String`  | Optional. Set to `lazy` to lazy-load the thumbnail images.                                                    |
 
 ## Lightbox-only API for advanced usage
 
