@@ -21,6 +21,7 @@ export default class extends Component {
       medium,
       large,
       alt,
+      loading,
       hideDownload,
       hideZoom,
       showRotate,
@@ -41,6 +42,7 @@ export default class extends Component {
           src={small}
           srcSet={smallSrcSet}
           alt={alt}
+          loading={loading}
         />
         {modalOpen && (
           <Lightbox
