@@ -8,7 +8,8 @@
 
 ## Running Tests
 
-- `npm run build && npm test` will run the tests once.
+- `npm run build && npm run cypress:run` to run the tests once.
+- `npm run cypress:open` helps to debug any issues with Cypress.
 
 ## Building
 

@@ -11,7 +11,7 @@ A _lightweight_ React component providing modal image Lightbox.
 - Only _3 kB_ when gzipped.
 - Zero dependencies.
 - Includes builds for CommonJS and ES modules.
-- For React 15.x and 16.x.
+- For React 16.x, 17.x and 18.x.
 - Esc, Enter & click outside the image close the lightbox
 - User can zoom & move the image or download the highest quality one
 - Download and Zoom -buttons can be hidden.
