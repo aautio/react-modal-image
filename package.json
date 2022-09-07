@@ -14,12 +14,8 @@
     "build-component": "rm -rf lib es && MODULES=commonjs babel --config-file ./babel-build-config.js src --out-dir lib && MODULES=es6 babel --config-file ./babel-build-config.js src --out-dir es",
     "build": "npm run build-component && npm run build-demo",
     "clean": "rm -rf lib es demo/dist",
-    "start:static": "http-server demo/dist/ -s -p 8888",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
-  },
-  "peerDependencies": {
-    "react": "16.x"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
@@ -32,9 +28,8 @@
     "cypress": "^10.7.0",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
-    "http-server": "^14.1.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^18",
+    "react-dom": "^18",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.10.1"

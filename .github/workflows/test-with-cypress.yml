@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - uses: cypress-io/github-action@v4
         with:
           build: npm run build
-          start: npm run start:static
-          wait-on: 'http://localhost:8888'
