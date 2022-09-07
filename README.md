@@ -1,6 +1,5 @@
 # react-modal-image
 
-[![CircleCI][build-badge]][build]
 [![npm package][npm-badge]][npm]
 
 A _lightweight_ React component providing modal image Lightbox.
@@ -79,7 +78,5 @@ const closeLightbox = () => {
 | --------- | ---------- | ------------------------------------------------------- |
 | `onClose` | `function` | Will be invoked when the Lightbox requests to be closed |
 
-[build-badge]: https://img.shields.io/circleci/project/github/aautio/react-modal-image.svg
-[build]: https://circleci.com/gh/aautio/react-modal-image
 [npm-badge]: https://img.shields.io/npm/v/react-modal-image.svg
 [npm]: https://www.npmjs.org/package/react-modal-image
