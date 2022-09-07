@@ -30,6 +30,6 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     }),
-    new CopyWebpackPlugin([{ from: "./public/" }])
+    new CopyWebpackPlugin({ patterns: [{ from: "./public/" }] })
   ]
 };

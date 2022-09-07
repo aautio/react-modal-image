@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe("react-modal-image", function() {
   it("can find six images in the demo", function() {
     cy.visit("demo/dist/index.html");
