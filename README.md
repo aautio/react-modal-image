@@ -18,7 +18,7 @@ A _lightweight_ React component providing modal image Lightbox.
 - Image alt shown as title of lightbox
 - Background color of transparent images can be overridden.
 
-You need to bring your own `Set` polyfill if you use old Internet Explorers.
+You need to bring your own `Set` and `fetch` polyfills if you use old Internet Explorers.
 
 ## Simple API
 

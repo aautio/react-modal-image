@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("react-modal-image", function() {
-  it("can find six images in the demo", function() {
+  it("can find seven images in the demo", function() {
     cy.visit("demo/dist/index.html");
 
     cy.contains("react-modal-image");
@@ -11,8 +11,9 @@ describe("react-modal-image", function() {
     cy.contains("#4 with download and zoom -buttons hidden");
     cy.contains("#5 with transparent png shown in hotpink background");
     cy.contains("#6 with rotation -button displayed");
+    cy.contains("#7 with images from external domain");
 
-    cy.get("img").should("have.length", 6);
+    cy.get("img").should("have.length", 7);
   });
 
   it("can open and close the three first lightboxes", function() {
@@ -115,4 +116,22 @@ describe("react-modal-image", function() {
 
     cy.get("span.__react_modal_image__icon_menu").children().last().click();
   });
+
+  it("can download from external domain", function() {
+    cy.visit("demo/dist/index.html");
+
+    cy.get("#react-modal-image-img").should("not.exist");
+
+    cy.get(`img:nth(${6})`).click();
+    cy.get("#react-modal-image-img");
+
+    // trigger download
+    cy.get("span.__react_modal_image__icon_menu").children().first().click();
+
+    const downloadsFolder = Cypress.config("downloadsFolder");
+    cy.readFile(downloadsFolder + "/aaa.png").should("exist");
+
+    // close
+    cy.get("span.__react_modal_image__icon_menu").children().last().click();
+  })  
 });
