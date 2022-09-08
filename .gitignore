@@ -6,3 +6,5 @@
 /umd
 npm-debug.log*
 .vscode
+cypress/screenshots
+cypress/downloads
