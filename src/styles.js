@@ -87,6 +87,7 @@ export const lightboxStyles = ({ imageBackgroundColor }) => `
   .__react_modal_image__icon_menu {
     display: inline-block;
     float: right;
+    padding-top: 10px;
   }
 
   .__react_modal_image__caption {
