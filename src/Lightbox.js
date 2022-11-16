@@ -171,6 +171,7 @@ export default class Lightbox extends Component {
                 id="react-modal-image-img"
                 className="__react_modal_image__large_img"
                 src={large || medium}
+                alt={alt}
                 style={{
                   transform: `translate3d(-50%, -50%, 0) translate3d(${
                     move.x
@@ -190,6 +191,7 @@ export default class Lightbox extends Component {
                 id="react-modal-image-img"
                 className="__react_modal_image__medium_img"
                 src={medium || large}
+                alt={alt}
                 handleDoubleClick={this.toggleZoom}
                 contextMenu={!medium}
                 style={{
