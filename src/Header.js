@@ -24,7 +24,7 @@ const crossOriginDownload = href => event => {
 
   event.preventDefault();
 
-  fetch(href)
+  fetch(href, { mode: "no-cors" })
     .then(res => {
       if (!res.ok) {
         console.error("Failed to download image, HTTP status " + res.status +  " from " + href)
